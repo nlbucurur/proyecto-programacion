@@ -37,8 +37,8 @@ lista=[['NG', 'OG', 'PG', 'QG', 'RG', 'SG', 'TG', 'UG', 'VG', 'WG', 'XG', 'YG', 
 
 def cifrar(mensaje):
     i=0;j=0   #i es la palabra y j es la posicion de la letra en cada palabra
-    mensaje=mensaje.upper()
-    mensaje=mensaje.split()
+    mensaje=mensaje.upper()      #Convierte las letras del mensaje en mayusculas
+    mensaje=mensaje.split()      #Organiza las palabras del mensaje en una lista, eliminando los espacios
     mensaje_cifrado=[]
     while i < len(mensaje):
         if (len(mensaje[i])%2)==0:
@@ -63,14 +63,28 @@ def cifrar(mensaje):
     return ' '.join(mensaje_cifrado)
 
 def descifrar(mensaje):
-    crip = mensaje.split(' ')
+    
+    mensaje=mensaje.upper()
+    mensaje=mensaje.replace(' ','')   #"Elimina" todos los espacios blancos
     mensaje_descifrado = []
-    l=len(crip); i=0
-    while i<l:
-        b=chr(int(crip[i]))
-        mensaje_descifrado.append(b)
-        i+=1
-        
+    i=0
+    cord_x=0
+    cord_y=0
+    while i<len(mensaje):
+        break1=False
+        while cord_y< 26:
+            while cord_x<26:
+                if lista[cord_y][cord_x]==mensaje[i:i+2]:                       #Compara los datos de la lista con una pareja de caracteres de mensaje
+                    mensaje_descifrado.append((chr(cord_x+65)+chr(cord_y+65)))  #+65 para que el numero coincida con la posicion en la tabla ASCII
+                    break1=True                                                 
+                    break                                                       #Agrega el par de letras a mensaje_descifrado y termina este ciclo while
+                else: cord_x+=1
+            if break1:break                                                     #Como ya se revisaron las letras mensaje[i:i+2] termina tambien este ciclo
+            else:
+                cord_x=0
+                cord_y+=1
+        cord_y=0
+        i+=2
     return ' '.join(mensaje_descifrado)
 
 
