@@ -1,4 +1,4 @@
-def cifrar_bin(mensaje):
+def cifrar(mensaje):
     MAYUSCULA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     minuscula = "abcdefghijklmnopqrstuvwxyz"
     numeros = "0123456789"
@@ -33,7 +33,7 @@ def cifrar_bin(mensaje):
 
 
 
-def descifrar_bin(mensaje):
+def descifrar(mensaje):
     MAYUSCULA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     minuscula = "abcdefghijklmnopqrstuvwxyz"
     numeros = "0123456789"
