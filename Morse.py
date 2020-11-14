@@ -6,7 +6,7 @@ Morse = { 'a':'.-', 'b':'-...', 'c':'-.-.', 'd':'-..', 'e':'.', 'f':'..-.', 'g':
           ',':'--..--', '.':'.-.-.-', '?':'..--..', '/':'-..-.', '-':'-....-', '(':'-.--.', ')':'-.--.-'}
 
 
-def cifrar_morse(mensaje):
+def cifrar(mensaje):
     mensaje_cifrado = ''
     for letra in mensaje:
         if letra == ' ':
@@ -16,7 +16,7 @@ def cifrar_morse(mensaje):
     return mensaje_cifrado
 
 
-def descifrar_morse(mensaje):
+def descifrar(mensaje):
    mensaje_descifrado = ''
    texto = ''
    for letra in mensaje:
@@ -47,12 +47,12 @@ def run():
 
         if opcion == 'c':
             mensaje = str(input('Ingresa el mensaje que deseas cifrar: '))
-            mensaje_cifrado = cifrar_morse(mensaje)
+            mensaje_cifrado = cifrar(mensaje)
             print(mensaje_cifrado)
 
         elif opcion == 'd':
             mensaje = str(input('Ingresa la oracion que deseas descifrar: '))
-            mensaje_descifrado = descifrar_morse(mensaje)
+            mensaje_descifrado = descifrar(mensaje)
             print(mensaje_descifrado)
 
         elif opcion == 's':
