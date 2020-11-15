@@ -74,6 +74,10 @@ def descifrar(mensaje):
     return ''.join(mensaje_desifrado)
 
 
+
+
+
+
 def run():
 
     while True:
@@ -88,12 +92,12 @@ def run():
 
         if opcion == 'c':
             mensaje = str(input('Ingresa el mensaje que deseas cifrar: '))
-            mensaje_cifrado = cifrar_bin(mensaje)
+            mensaje_cifrado = cifrar(mensaje)
             print(mensaje_cifrado)
 
         elif opcion == 'd':
             mensaje = str(input('Ingresa la oracion que deseas descifrar: '))
-            mensaje_descifrado = descifrar_bin(mensaje)
+            mensaje_descifrado = descifrar(mensaje)
             print(mensaje_descifrado)
 
         elif opcion == 's':
