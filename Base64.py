@@ -11,7 +11,6 @@ def cifrar_bin(mensaje):
     numeros = "0123456789"
     simbolos = '!"#$%&´()*+,-./'
     palabras = mensaje.split(" ")
-    print(palabras)
     mensaje_cifrado = []
     
 
@@ -38,8 +37,49 @@ def cifrar_bin(mensaje):
 
     return ' '.join(mensaje_cifrado)
 
+def descifrar_bin(mensaje):
+    MAYUSCULA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    minuscula = "abcdefghijklmnopqrstuvwxyz"
+    numeros = "0123456789"
+    simbolos = '!"#$%&´()*+,-./'
+    letras = mensaje.split(" ")
+    mensaje_desifrado=[]
+    for letra in letras:
+         if letra != "00100000":
+             sub_letra = list(letra)
+             if sub_letra[1] == "1":
+                 
+                  if sub_letra[2] == "0":
+                      bin_index = sub_letra[3:len(letra)]
+                      index = "".join(bin_index)
+                      mensaje_desifrado.append(MAYUSCULA[int(str(index),2 )-1])
+                  elif sub_letra[2] == "1":
+                      bin_index = sub_letra[3:len(letra)]
+                      index = "".join(bin_index)
+                      mensaje_desifrado.append(minuscula[int(str(index),2 )-1])
 
-def cifrar_base64(mensaje):
+                  
+                  
+             if sub_letra[1] == "0":
+                 
+                  if sub_letra[3] == "0":
+                      bin_index = sub_letra[4:len(letra)]
+                      index = "".join(bin_index)
+                      mensaje_desifrado.append(simbolos[int(str(index),2 )-1])
+                  elif sub_letra[3] == "1":
+                      bin_index = sub_letra[4:len(letra)]
+                      index = "".join(bin_index)
+                      mensaje_desifrado.append(numeros[int(str(index),2 )-1])
+
+
+         if letra == "00100000":
+             mensaje_desifrado.append(" ")
+
+    return ''.join(mensaje_desifrado)
+
+
+
+def cifrar(mensaje):
   TABLA = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
   binario = cifrar_bin(mensaje)
   cadena_1 = "".join(binario.split(" "))
@@ -71,4 +111,68 @@ def cifrar_base64(mensaje):
 
   mensaje_cifrado.append(a)         
         
-  return "".join(mensaje_cifrado), print(bits_6)
+  return "".join(mensaje_cifrado)
+
+def descifrar(mensaje):
+    
+    TABLA = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+    letras = list(mensaje)
+    mensaje_desifrado=[]
+    letras_1 = []
+    bits6 = []
+    bits8 = []
+    
+    for i in letras:
+        if i != "=":
+            letras_1.append(i)
+    
+    for i in letras_1:
+      bits6.append(bin(TABLA.index(i))[2:].zfill(6))
+    
+    cadena =  "".join(bits6)
+    
+    for index in range(0,len(cadena), 8):    
+       bits8.append(cadena[index: index+8])
+    
+    for i in bits8:
+        i_sub = list(i)
+        if len(i_sub ) != 8:
+            bits8.remove(i)
+    
+        mensaje_desifrado.append(descifrar_bin(i))
+        
+    
+    return ''.join(mensaje_desifrado)
+
+def run():
+
+    while True:
+
+        opcion = str(input('''Bienvenido al cifrador binario. ¿Qué deseas hacer? Pulsa la tecla correspondiente:
+
+            [c]ifrar
+            [d]escifrar
+            [s]alir
+
+            '''))
+
+        if opcion == 'c':
+            mensaje = str(input('Ingresa el mensaje que deseas cifrar: '))
+            mensaje_cifrado = cifrar(mensaje)
+            print(mensaje_cifrado)
+
+        elif opcion == 'd':
+            mensaje = str(input('Ingresa la oracion que deseas descifrar: '))
+            mensaje_descifrado = descifrar(mensaje)
+            print(mensaje_descifrado)
+
+        elif opcion == 's':
+            print('¡Gracias por jugar, vuelve pronto!')
+            break
+
+        else:
+            print('No has seleccionado ninguna opción valida. Ejecuta el programa nuevamente.')
+            break
+
+if __name__ == '__main__':
+    run()
