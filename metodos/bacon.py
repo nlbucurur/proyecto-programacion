@@ -27,6 +27,7 @@ KEYS = {
     'z': 'BBAAB',
 }
 
+
 def cifrar(mensaje):
     palabras = mensaje.split(' ')
     mensaje_cifrado = []
@@ -50,36 +51,3 @@ def descifrar_letras(mensaje):
                 palabra_descifrada = palabra_descifrada + key + ' '
     mensaje_descifrado.append(palabra_descifrada)
     return ' '.join(mensaje_descifrado)
-
-def run():
-
-    while True:
-
-        opcion = str(input('''Bienvenido al cifrador por sustitución de Francis Bacons. Te avisamos que este programa funciona con la segunda versión del alfabeto creado para este métodod e cifrado. ¿Qué deseas hacer? Pulsa la tecla correspondiente:
-
-            [c]ifrar
-            [d]escifrar
-            [s]alir
-
-            '''))
-        
-        if opcion == 'c':
-            mensaje = str(input('Ingresa el mensaje que deseas cifrar: '))
-            mensaje_cifrado = cifrar(mensaje.lower())
-            print(mensaje_cifrado)
-
-        elif opcion == 'd':
-            mensaje = str(input('Ingresa la oracion que deseas descifrar (Ten en cuenta que esta debe estar ingresada letra por letra en mayúsculas): '))
-            mensaje_descifrado = descifrar_letras(mensaje)
-            print(mensaje_descifrado)
-
-        elif opcion == 's':
-            print('¡Gracias por jugar, vuelve pronto!')
-            break
-
-        else:
-            print('No has seleccionado ninguna opción valida. Ejecuta el programa nuevamente.')
-            break
-
-if __name__ == '__main__':
-    run()

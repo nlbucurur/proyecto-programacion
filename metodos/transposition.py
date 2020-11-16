@@ -29,24 +29,3 @@ def descifrado(llave, mensaje):
             col = 0
             row += 1
     return ''.join(texto)
-
-def run():
-    opcion = str(input('''Bienvenido al cifrador por transposición ¿Qué deseas hacer? Pulsa la tecla correspondiente:
-
-            [c]ifrar
-            [d]escifrar
-
-            '''))
-    if opcion == "c":
-        mensaje = str(input('Introduce la frase: '))
-        mensaje_cifrado = cifrado(8, mensaje)
-        print(mensaje_cifrado)
-    elif opcion == "d":
-        mensaje = str(input('Introduce la frase: '))
-        mensaje_descifrado = descifrado(8, mensaje)
-        print(mensaje_descifrado)
-    else:
-        print("Opción invalida")
-
-if __name__ == '__main__':
-    run()
