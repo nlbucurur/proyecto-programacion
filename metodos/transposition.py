@@ -1,6 +1,6 @@
 import math
 
-def cifrado(llave, mensaje):
+def cifrar(mensaje, llave=8):
     texto_cifrado = [''] * llave
 
     for col in range(llave):
@@ -10,7 +10,8 @@ def cifrado(llave, mensaje):
             punto += llave
     return ''.join(texto_cifrado)
 
-def descifrado(llave, mensaje):
+
+def descifrar(mensaje, llave=8):
 
     num_de_columnas = math.ceil(len(mensaje) / llave)
     num_de_filas = llave
@@ -29,24 +30,3 @@ def descifrado(llave, mensaje):
             col = 0
             row += 1
     return ''.join(texto)
-
-def run():
-    opcion = str(input('''Bienvenido al cifrador por transposición ¿Qué deseas hacer? Pulsa la tecla correspondiente:
-
-            [c]ifrar
-            [d]escifrar
-
-            '''))
-    if opcion == "c":
-        mensaje = str(input('Introduce la frase: '))
-        mensaje_cifrado = cifrado(8, mensaje)
-        print(mensaje_cifrado)
-    elif opcion == "d":
-        mensaje = str(input('Introduce la frase: '))
-        mensaje_descifrado = descifrado(8, mensaje)
-        print(mensaje_descifrado)
-    else:
-        print("Opción invalida")
-
-if __name__ == '__main__':
-    run()
