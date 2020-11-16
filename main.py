@@ -1,5 +1,5 @@
-from metodos import ascii, atbash, bacon, binary, columnar, digraph, morse
-from metodos import rot, transposition
+from metodos import A1Z26, ascii, atbash, bacon, binary, columnar, digraph
+from metodos import morse, rot, transposition
 
 print("Bienvenido al cifrador")
 
@@ -23,9 +23,9 @@ def quit():
     exit(0)
 
 
-methods = {"as": ascii, "at": atbash, "ba": bacon, "bi": binary, "c": columnar,
-           "d": digraph, "m": morse, "r": rot, "t": transposition,
-           "s": quit, "ay": show_help}
+methods = {"A": A1Z26, "as": ascii, "at": atbash, "ba": bacon, "bi": binary,
+           "c": columnar, "d": digraph, "m": morse, "r": rot,
+           "t": transposition, "s": quit, "ay": show_help}
 
 
 def run():
@@ -35,9 +35,10 @@ def run():
         metodo = input("""
 ¿Qué método deseas usar hoy?
 
-[as]cii \t [at]bash \t [ba]con
-[bi]nary \t [c]olumnar \t [d]igraph
-[m]orse \t [r]ot \t\t [t]ransposition
+[A]1Z26 \t [as]cii \t [at]bash
+[ba]con \t [bi]nary \t [c]olumnar
+[d]igraph \t [m]orse \t [r]ot
+[t]ransposition
 
 [ay]uda \t [s]alir
 
