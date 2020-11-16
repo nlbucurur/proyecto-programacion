@@ -1,6 +1,6 @@
 import math
 
-def cifrado(llave, mensaje):
+def cifrar(mensaje, llave=8):
     texto_cifrado = [''] * llave
 
     for col in range(llave):
@@ -10,7 +10,8 @@ def cifrado(llave, mensaje):
             punto += llave
     return ''.join(texto_cifrado)
 
-def descifrado(llave, mensaje):
+
+def descifrar(mensaje, llave=8):
 
     num_de_columnas = math.ceil(len(mensaje) / llave)
     num_de_filas = llave

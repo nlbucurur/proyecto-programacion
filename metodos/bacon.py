@@ -41,7 +41,7 @@ def cifrar(mensaje):
     return ' '.join(mensaje_cifrado)
 
 
-def descifrar_letras(mensaje):
+def descifrar(mensaje):
     palabras = mensaje.split(' ')
     mensaje_descifrado = []
     palabra_descifrada = ''
