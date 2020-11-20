@@ -5,10 +5,11 @@ Created on Wed Nov 18 18:27:42 2020
 @author: Ronald
 """
 from tkinter import *
-
-        
+from metodos import A1Z26, ascii, atbash, bacon, base64, binary, columnar
+from metodos import digraph, morse, rot, transposition
+lista_met=[A1Z26,ascii,atbash,bacon,base64,binary,columnar,digraph,morse,rot,transposition]
 #------------------Funcion que ejecuta la funcion de cifrado o descifrado-------------
-def CypherOrDecypher():
+def CypherOrDecypher(textoCom1,textoCom2,metodoElegido,ve1):
         
 
     if ve1.get()==1:
@@ -25,7 +26,7 @@ def CypherOrDecypher():
         textoCom2.delete(1.0,"end")
         textoCom2.insert(1.0,lista_met[metodoElegido.get()-1].descifrar(men_decif))
             
-def CorD_braille():
+def CorD_braille(textoCom,LabelImg,metodoElegido,ve1):
         
     if ve1.get()==1:
         men_cif=textoCom.get("1.0",'end-1c') #el -1c es para eliminar un \n extra que toma el .get()
@@ -66,7 +67,7 @@ def VentanaCifrado(root,metodoElegido,lista_met,lista_nom,ve1,ve2):
             croot.geometry("1000x600")
             #-----------------Frames----------------
             frameI1=Frame(croot,width=500,height=200)
-            frameI1.config(bg="light blue",width=500,height=200)
+            frameI1.config(bg="red",width=500,height=200)
             frameI1.grid(row=0,column=0,columnspan=3)
             
             frameIText1=Frame(croot,width=200,height=300)
@@ -116,7 +117,7 @@ def VentanaCifrado(root,metodoElegido,lista_met,lista_nom,ve1,ve2):
             
             #-------------Button---------------
             
-            botonCorD=Button(frameButton,text="Ejecutar",command=CypherOrDecypher)
+            botonCorD=Button(frameButton,text="Ejecutar",command=lambda:CypherOrDecypher(textoCom1,textoCom2,metodoElegido,ve1))
             botonCorD.config(cursor="hand2")
             botonCorD.pack()
         #---------------------Caso Braille------------------------
@@ -171,7 +172,7 @@ def VentanaCifrado(root,metodoElegido,lista_met,lista_nom,ve1,ve2):
             
             #-------------Button---------------
             
-            botonCorD=Button(frameButton,text="Ejecutar",command=CorD_braille)
+            botonCorD=Button(frameButton,text="Ejecutar",command=lambda:CorD_braille(textoCom,LabelImg,metodoElegido,ve1))
             botonCorD.config(cursor="hand2")
             botonCorD.grid(row=5,column=0)
         
