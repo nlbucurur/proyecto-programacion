@@ -6,6 +6,7 @@ Created on Mon Nov 16 18:17:25 2020
 """
 
 from tkinter import *
+from tkinter import messagebox
 from metodos import A1Z26, ascii, atbash, bacon, base64, binary, columnar
 from metodos import digraph, morse,multiplicativo, rot, transposition
 import InterfacesSecundarias

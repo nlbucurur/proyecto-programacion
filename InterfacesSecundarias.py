@@ -5,8 +5,9 @@ Created on Wed Nov 18 18:27:42 2020
 @author: Ronald
 """
 from tkinter import *
+from tkinter import messagebox
 from metodos import A1Z26, ascii, atbash, bacon, base64, binary, columnar
-from metodos import digraph, morse, multiplicativo, rot, transposition,braille
+from metodos import digraph, morse, multiplicativo, rot, transposition
 lista_met=[A1Z26,ascii,atbash,bacon,base64,binary,columnar,digraph,morse,multiplicativo,rot,transposition]
 
 
