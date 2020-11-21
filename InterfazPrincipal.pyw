@@ -15,7 +15,7 @@ lista_nom=["A1Z26","Ascii","Atbash","Bacon","Base64","Binary","Columnar","Digrap
 
 root=Tk()
 root.title("Proyecto programación | Encriptado y Desencriptado") #Nombre que aparece en la ventana
-#root.iconbitmap("img\VCypher.ico")  #Permite elegir el icono de la esquina superior izquierda
+root.iconbitmap("img\VCypher.ico")  #Permite elegir el icono de la esquina superior izquierda
 root.resizable(0,0)
 root.geometry("500x360") #Tamaño por defecto de la ventana principal
 
@@ -72,17 +72,51 @@ R11.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R11.grid(row=6,column=2)
 
 #------------Lista que almacena IntVar()----------
 
+
 ve1=IntVar()
 ve2=IntVar()
 ve1.set(1)
 VarEntera=[ve1,ve2]
+
+#------------Lista de imagenes para método Braille
+
+ImageA=PhotoImage(file="img\Braille\A.png")    
+ImageB=PhotoImage(file="img\Braille\B.png")  
+ImageC=PhotoImage(file="img\Braille\C.png")   
+ImageD=PhotoImage(file="img\Braille\D.png")   
+ImageE=PhotoImage(file="img\Braille\E.png")   
+ImageF=PhotoImage(file="img\Braille\F.png")   
+ImageG=PhotoImage(file="img\Braille\G.png")   
+ImageH=PhotoImage(file="img\Braille\H.png")   
+ImageI=PhotoImage(file="img\Braille\I.png")   
+ImageJ=PhotoImage(file="img\Braille\J.png")   
+ImageK=PhotoImage(file="img\Braille\K.png")   
+ImageL=PhotoImage(file="img\Braille\L.png")   
+ImageM=PhotoImage(file="img\Braille\M.png")   
+ImageN=PhotoImage(file="img\Braille\M_N.png")   
+ImageO=PhotoImage(file="img\Braille\O.png")   
+ImageP=PhotoImage(file="img\Braille\P.png")   
+ImageQ=PhotoImage(file="img\Braille\Q.png")  
+ImageR=PhotoImage(file="img\Braille\R.png")   
+ImageS=PhotoImage(file="img\Braille\S.png")   
+ImageT=PhotoImage(file="img\Braille\T.png")   
+ImageU=PhotoImage(file="img\Braille\T_U.png")   
+ImageV=PhotoImage(file="img\Braille\V.png")   
+ImageW=PhotoImage(file="img\Braille\W.png")   
+ImageX=PhotoImage(file="img\Braille\X.png")
+ImageY=PhotoImage(file="img\Braille\Y.png")   
+ImageZ=PhotoImage(file="img\Braille\Z.png")
+img_list=[ImageA,ImageB,ImageC,ImageD,ImageE,ImageF,ImageG,
+          ImageH,ImageI,ImageJ,ImageK,ImageL,ImageM,ImageN,
+          ImageO,ImageP,ImageQ,ImageR,ImageS,ImageT,ImageU,
+          ImageV,ImageW,ImageX,ImageY,ImageZ]
 
 
 #------------Botón para llamar un método de cifrado----------------------
 
 
 boton_metodo=Button(root,text="Listo",command=lambda:InterfacesSecundarias.VentanaCifrado(root,
-                                        metodoElegido,lista_met,lista_nom,ve1,ve2))
+                                        metodoElegido,lista_met,lista_nom,ve1,ve2,img_list))
 boton_metodo.config(cursor="hand2")
 boton_metodo.pack()#grid(row=7,column=1)
 
