@@ -74,13 +74,12 @@ R11.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R11.grid(row=5,column=2)
 R11=Radiobutton(frame1,text="Braille",variable=metodoElegido,value=13)
 R11.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R11.grid(row=6,column=2)
 
-
 #------------Lista que almacena IntVar()----------
-
 
 ve1=IntVar()
 ve2=IntVar()
 ve1.set(1)
+
 VarEntera=[ve1,ve2]
 
 #------------Lista de imagenes para método Braille
@@ -115,7 +114,6 @@ img_list=[ImageA,ImageB,ImageC,ImageD,ImageE,ImageF,ImageG,
           ImageH,ImageI,ImageJ,ImageK,ImageL,ImageM,ImageN,
           ImageO,ImageP,ImageQ,ImageR,ImageS,ImageT,ImageU,
           ImageV,ImageW,ImageX,ImageY,ImageZ]
-
 
 #------------Botón para llamar un método de cifrado----------------------
 

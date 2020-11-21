@@ -6,7 +6,7 @@ Created on Wed Nov 18 18:27:42 2020
 """
 from tkinter import *
 from tkinter import messagebox
-from metodos import A1Z26, ascii, atbash, bacon, base64, binary, columnar
+from metodos import A1Z26, ascii, atbash, bacon, base64, binary,braille, columnar
 from metodos import digraph, morse, multiplicativo, rot, transposition
 lista_met=[A1Z26,ascii,atbash,bacon,base64,binary,columnar,digraph,morse,multiplicativo,rot,transposition]
 
@@ -28,24 +28,8 @@ def CypherOrDecypher(textoCom1,textoCom2,metodoElegido,ve1):
         #y luego se utilizará .insert para poner el mensaje
         textoCom2.delete(1.0,"end")
         textoCom2.insert(1.0,lista_met[metodoElegido.get()-1].descifrar(men_decif))
-            
-def CorD_braille(textoCom,LabelImg,metodoElegido,ve1):
-        
-    if ve1.get()==1:
-        men_cif=textoCom.get("1.0",'end-1c') #el -1c es para eliminar un \n extra que toma el .get()
-        LabelImg.delete("1.0","end")
-        LabelImg.insert("1.0",lista_met[metodoElegido.get()-1].cifrar(men_cif))
-            
-    else:
-        men_decif=textoCom.get("1.0",'end-1c')
-            
-        #Text no tiene método .set por lo que se usará
-        #.delete para borrar el contenido del cuadro
-        #y luego se utilizará .insert para poner el mensaje
-        LabelImg.delete(1.0,"end")
-        LabelImg.insert(1.0,lista_met[metodoElegido.get()-1].descifrar(men_decif))
 
-        
+
 #---------------Funcion que abre una nueva ventana donde se cifra y descifra un mensaje------------
 
 
@@ -138,38 +122,50 @@ def VentanaCifrado(root,metodoElegido,lista_met,lista_nom,ve1,ve2,img_list):
             frameIText.config(bg="red")
             frameIText.grid(row=1,column=0)
             
+            frameIImgC=Frame(croot,width=200,height=300)
+            frameIImgC.config(bg="pink")
+            frameIImgC.grid(row=1,column=1)
+            
             frameIImg=Frame(croot,width=200,height=300)
             frameIImg.config(bg="green")
-            frameIImg.grid(row=2,column=0)
+            #frameIImg.grid(row=2,column=0)
             
             frameButton=Frame(croot)
             frameButton.grid(row=3,column=0)#,columnspan=3)
             
+            #----------------Radiobuttons-----------
+            
+            RbC=Radiobutton(frameI1,text="Cifrar",variable=ve1,value=1,command=lambda:
+                            braille.CorD_brailleInterface(frameIImgC,frameIImg,ve1))
+            RbC.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC")
+            RbC.grid(row=1,column=0)
+
+            RbD=Radiobutton(frameI1,text="Descifrar",variable=ve1,value=2,command=lambda:
+                            braille.CorD_brailleInterface(frameIImgC,frameIImg,ve1))
+            RbD.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");
+            RbD.grid(row=1,column=1)
+            
             #----------------Cuadros de texto----------------
             Label(frameI1,text="       Por favor elige una de las opciones           ").grid(row=0,column=0,columnspan=2)
-            
+        
             textoCom=Text(frameIText,width=40,height=10)
             textoCom.grid(row=1,column=0,padx=10,pady=10)
 
             #LabelImg=Text(frameIImg,width=40,height=10)
             #LabelImg.grid(row=1,column=0,padx=10,pady=10)
-            
+        
             #-------------Barras de scroll------------
-            
+        
             #Para agregar una barra de scrollbar al texto
             scrollTexto=Scrollbar(frameIText,command=textoCom.yview)
             #.yview es para la vista vertical
             scrollTexto.grid(row=1,column=1,sticky="nsew")
             #Con sticky="nscw" se adapta al tamaño del widgeth al que pertenece
             textoCom.config(yscrollcommand=scrollTexto.set)
-            
+        
             #----------------Teclado-------------------
-            
-             
-            #labelB=Label(frameIImg,image=ImageB)
-            #labelB.grid(row=0,column=1)
  
-            
+        
             botonA=Button(frameIImg,image=img_list[0])
             botonB=Button(frameIImg,image=img_list[1])
             botonC=Button(frameIImg,image=img_list[2])
@@ -196,7 +192,8 @@ def VentanaCifrado(root,metodoElegido,lista_met,lista_nom,ve1,ve2,img_list):
             botonX=Button(frameIImg,image=img_list[23])
             botonY=Button(frameIImg,image=img_list[24])
             botonZ=Button(frameIImg,image=img_list[25])
-            
+        
+        
             botonA.config(cursor="hand2")
             botonB.config(cursor="hand2")
             botonC.config(cursor="hand2")
@@ -223,7 +220,7 @@ def VentanaCifrado(root,metodoElegido,lista_met,lista_nom,ve1,ve2,img_list):
             botonX.config(cursor="hand2")
             botonY.config(cursor="hand2")
             botonZ.config(cursor="hand2")
-            
+        
             botonA.grid(row=0,column=0,padx=2,pady=2)
             botonB.grid(row=0,column=1,padx=2,pady=2)
             botonC.grid(row=0,column=2,padx=2,pady=2)
@@ -250,22 +247,14 @@ def VentanaCifrado(root,metodoElegido,lista_met,lista_nom,ve1,ve2,img_list):
             botonX.grid(row=3,column=3,padx=2,pady=2)
             botonY.grid(row=3,column=4,padx=2,pady=2)
             botonZ.grid(row=3,column=5,padx=2,pady=2)
-            
-            
-            
-            #----------------Radiobuttons-----------
-            
-            RbC=Radiobutton(frameI1,text="Cifrar",variable=ve1,value=1)
-            RbC.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC")
-            RbC.grid(row=1,column=0)
+            lista_botones=[botonA,botonB,botonC,botonD,botonE,botonF,botonG,botonH,botonI,botonJ,
+                           botonK,botonL,botonM,botonN,botonO,botonP,botonQ,botonR,botonS,botonT,
+                           botonU,botonV,botonW,botonX,botonY,botonZ]
 
-            RbD=Radiobutton(frameI1,text="Descifrar",variable=ve1,value=2)
-            RbD.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");
-            RbD.grid(row=1,column=1)
-            
             #-------------Button---------------
-            
-            botonCorD=Button(frameButton,text="Ejecutar",command=lambda:CorD_braille(textoCom,LabelImg,metodoElegido,ve1))
+                
+            botonCorD=Button(frameButton,text="Ejecutar",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones))
             botonCorD.config(cursor="hand2")
             botonCorD.grid(row=5,column=0,padx=15,pady=15)
             #nota: al poner cualquier letra existente en este punto se muestran las imagenes
