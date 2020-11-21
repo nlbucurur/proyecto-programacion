@@ -6,8 +6,8 @@ Created on Wed Nov 18 18:27:42 2020
 """
 from tkinter import *
 from metodos import A1Z26, ascii, atbash, bacon, base64, binary, columnar
-from metodos import digraph, morse, rot, transposition,braille
-lista_met=[A1Z26,ascii,atbash,bacon,base64,binary,columnar,digraph,morse,rot,transposition]
+from metodos import digraph, morse, multiplicativo, rot, transposition,braille
+lista_met=[A1Z26,ascii,atbash,bacon,base64,binary,columnar,digraph,morse,multiplicativo,rot,transposition]
 
 
 #------------------Funcion que ejecuta la funcion de cifrado o descifrado-------------
@@ -62,7 +62,7 @@ def VentanaCifrado(root,metodoElegido,lista_met,lista_nom,ve1,ve2,img_list):
         croot.iconbitmap("img\VCypher.ico")
         croot.title((lista_nom[metodoElegido.get()-1])+" cypher") 
         
-        if metodoElegido.get()<12:
+        if metodoElegido.get()<13:
             
             croot.config(bg="light blue")
             #Tamaño de la nueva ventana
@@ -123,7 +123,7 @@ def VentanaCifrado(root,metodoElegido,lista_met,lista_nom,ve1,ve2,img_list):
             botonCorD.config(cursor="hand2")
             botonCorD.pack()
         #---------------------Caso Braille------------------------
-        elif metodoElegido.get()==12:
+        elif metodoElegido.get()==13:
             
             croot.config(bg="#D6DBDF")
             #Tamaño de la nueva ventana

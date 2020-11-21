@@ -7,17 +7,17 @@ Created on Mon Nov 16 18:17:25 2020
 
 from tkinter import *
 from metodos import A1Z26, ascii, atbash, bacon, base64, binary, columnar
-from metodos import digraph, morse, rot, transposition
+from metodos import digraph, morse,multiplicativo, rot, transposition
 import InterfacesSecundarias
-lista_met=[A1Z26,ascii,atbash,bacon,base64,binary,columnar,digraph,morse,rot,transposition]
+lista_met=[A1Z26,ascii,atbash,bacon,base64,binary,columnar,digraph,morse,multiplicativo,rot,transposition]
 lista_nom=["A1Z26","Ascii","Atbash","Bacon","Base64","Binary","Columnar","Digraph"
-           ,"Morse","Rot","Transposition","Braille"]
+           ,"Morse","Multiplicativo","Rot","Transposition","Braille"]
 
 root=Tk()
 root.title("Proyecto programación | Encriptado y Desencriptado") #Nombre que aparece en la ventana
 root.iconbitmap("img\VCypher.ico")  #Permite elegir el icono de la esquina superior izquierda
 root.resizable(0,0)
-root.geometry("500x360") #Tamaño por defecto de la ventana principal
+root.geometry("500x400") #Tamaño por defecto de la ventana principal
 
 root.config(bg="#D0ECE7",bd="15",relief="groove") #Color de fondo, tamaño del borde y 
 #tipo de borde de la raíz de la interfaz respectivamente
@@ -53,22 +53,26 @@ R6=Radiobutton(frame1,text="Binary",variable=metodoElegido,value=6)
 R6.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R6.grid(row=6,column=0)
 
 R7=Radiobutton(frame1,text="Columnar",variable=metodoElegido,value=7)
-R7.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R7.grid(row=1,column=2)
+R7.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R7.grid(row=7,column=0)
 
 R8=Radiobutton(frame1,text="Digraph",variable=metodoElegido,value=8)
-R8.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R8.grid(row=2,column=2)
+R8.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R8.grid(row=1,column=2)
 
 R9=Radiobutton(frame1,text="Morse",variable=metodoElegido,value=9)
-R9.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R9.grid(row=3,column=2)
+R9.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R9.grid(row=2,column=2)
 
-R10=Radiobutton(frame1,text="Rot",variable=metodoElegido,value=10)
+RMultiplicativo=Radiobutton(frame1,text="Multiplicativo",variable=metodoElegido,value=10)
+RMultiplicativo.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");RMultiplicativo.grid(row=3,column=2)
+
+R10=Radiobutton(frame1,text="Rot",variable=metodoElegido,value=11)
 R10.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R10.grid(row=4,column=2)
 
-R11=Radiobutton(frame1,text="Transposition",variable=metodoElegido,value=11)
+R11=Radiobutton(frame1,text="Transposition",variable=metodoElegido,value=12)
 R11.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R11.grid(row=5,column=2)
 
-R11=Radiobutton(frame1,text="Braille",variable=metodoElegido,value=12)
+R11=Radiobutton(frame1,text="Braille",variable=metodoElegido,value=13)
 R11.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R11.grid(row=6,column=2)
+
 
 #------------Lista que almacena IntVar()----------
 
