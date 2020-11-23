@@ -22,7 +22,10 @@ def cifrar(mensaje):
         
         if len(palabras) > 1:
            mensaje_cifrado.append("00100000")
-      
+           
+    if mensaje_cifrado[-1] == "00100000":
+        mensaje_cifrado.pop()
+
     return ' '.join(mensaje_cifrado)
   
   TABLA = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
@@ -31,6 +34,7 @@ def cifrar(mensaje):
   bits_6 = []
   mensaje_cifrado=[]
   
+  
   for index in range(0,len(cadena_1), 6):    
      bits_6.append(cadena_1[index: index+6])
   
@@ -38,26 +42,25 @@ def cifrar(mensaje):
   for letra in bits_6:
     
      index = list(letra)
-     
+          
      while len(index) < 6:
         index.append("0")
-    
+     
      index_64 = int(str("".join(index)), 2)
      mensaje_cifrado.append(TABLA[index_64])      
         
-         
-  for i in range(0, len(bits_6)):
 
-               
-     if 2*i == len(bits_6):
-         if 2*i % 4 == 0:
-             a = ""
-         else:    
-             a = "=="
-     elif 3*i ==len(bits_6):
-        a = "="   
-
-  mensaje_cifrado.append(a)         
+        
+  if   len(bits_6)%4 <= 0:
+      a = ""
+  elif len(bits_6)%4 <= 0.5:
+      a = "=="  
+      mensaje_cifrado.append(a) 
+  elif len(bits_6)%4 >= 0.75:
+      a = "="
+      mensaje_cifrado.append(a)
+        
+        
         
   return "".join(mensaje_cifrado)
 
@@ -68,8 +71,6 @@ def descifrar(mensaje):
     def descifrar_bin(mensaje):
         MAYUSCULA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         minuscula = "abcdefghijklmnopqrstuvwxyz"
-        numeros = "0123456789"
-        simbolos = '!"#$%&´()*+,-./'
         letras = mensaje.split(" ")
         mensaje_desifrado=[]
         for letra in letras:
@@ -120,36 +121,3 @@ def descifrar(mensaje):
         
     
     return ''.join(mensaje_desifrado)
-
-def run():
-
-    while True:
-
-        opcion = str(input('''Bienvenido al cifrador. ¿Qué deseas hacer? Pulsa la tecla correspondiente:
-
-            [c]ifrar
-            [d]escifrar
-            [s]alir
-
-            '''))
-
-        if opcion == 'c':
-            mensaje = str(input('Ingresa el mensaje que deseas cifrar: '))
-            mensaje_cifrado = cifrar(mensaje)
-            print(mensaje_cifrado)
-
-        elif opcion == 'd':
-            mensaje = str(input('Ingresa la oracion que deseas descifrar: '))
-            mensaje_descifrado = descifrar(mensaje)
-            print(mensaje_descifrado)
-
-        elif opcion == 's':
-            print('¡Gracias por jugar, vuelve pronto!')
-            break
-
-        else:
-            print('No has seleccionado ninguna opción valida. Ejecuta el programa nuevamente.')
-            break
-
-if __name__ == '__main__':
-    run()
