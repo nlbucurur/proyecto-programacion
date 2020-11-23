@@ -50,7 +50,10 @@ def cifrar(mensaje):
 
                
      if 2*i == len(bits_6):
-        a = "=="
+         if 2*i % 4 == 0:
+             a = ""
+         else:    
+             a = "=="
      elif 3*i ==len(bits_6):
         a = "="   
 
