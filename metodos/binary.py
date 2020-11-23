@@ -27,7 +27,9 @@ def cifrar(mensaje):
 
         if len(palabras) > 1:
             mensaje_cifrado.append("00100000")
-
+            
+    if mensaje_cifrado[-1] == "00100000":
+        mensaje_cifrado.pop() 
 
     return ' '.join(mensaje_cifrado)
 
