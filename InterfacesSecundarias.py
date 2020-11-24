@@ -8,7 +8,7 @@ from tkinter import *
 from tkinter import messagebox
 from metodos import A1Z26, ascii, atbash, bacon, base64, binary,braille, columnar
 from metodos import digraph, morse, multiplicativo, rot, transposition
-lista_met=[A1Z26,ascii,atbash,bacon,base64,binary,columnar,digraph,morse,multiplicativo,rot,transposition]
+lista_met=[A1Z26,ascii,atbash,bacon,base64,binary,columnar,digraph,morse,multiplicativo,rot,transposition,braille]
 
 
 #------------------Funcion que ejecuta la funcion de cifrado o descifrado-------------
@@ -34,7 +34,7 @@ def CypherOrDecypher(textoCom1,textoCom2,metodoElegido,ve1):
 
 
 
-def VentanaCifrado(root,metodoElegido,lista_met,lista_nom,ve1,ve2,img_list): 
+def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list): 
     
     if metodoElegido.get()==0:
         messagebox.showinfo("Seleccionar","Por favor seleccione un método de cifrado")
@@ -108,7 +108,7 @@ def VentanaCifrado(root,metodoElegido,lista_met,lista_nom,ve1,ve2,img_list):
             botonCorD.config(cursor="hand2")
             botonCorD.pack()
         #---------------------Caso Braille------------------------
-        elif metodoElegido.get()==13:
+        elif metodoElegido.get()<15:
             
             croot.config(bg="#D6DBDF")
             #Tamaño de la nueva ventana
