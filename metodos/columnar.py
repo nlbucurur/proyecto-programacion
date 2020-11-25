@@ -62,4 +62,41 @@ def cifrar(mensaje1):
             mensaje_cifrado += matriz[j][d]
         k += 1
 
-    return mensaje_cifrado
+    return print(mensaje_cifrado)
+
+
+
+def descifrar(mensaje1):
+    mensaje = (mensaje1.replace(" ", "")).lower()
+    clave = input("Introduce la palabra clave: ").lower()
+    numero_asignado = asignar_numero(clave)
+    print('')
+    filas = int(len(mensaje) / len(clave)) #Encuentra el numero de filas que debe haber en la matriz
+    numero = ubicacion(clave, numero_asignado) #Asigna los puestos en los que deben ser escritas las columnas de la matriz
+    #print(numero)
+    matriz = [[0] * len(clave) for i in range(filas)] #Crea la matriz a partir del numero de letras de la palabra clave y el numero de filas
+
+    mensaje_descifrado = ""
+    x=0
+    i=0
+    for j in range(len(mensaje)):
+        m=0
+        if x != len(clave):
+            m: int = int(numero[x])
+        else:
+            x=0
+
+        for p in range(filas):
+            matriz[p][m] = mensaje[i]
+            i += 1
+        if i == len(mensaje):
+            break
+        x += 1
+
+    for i in range(filas):
+        for j in range(len(clave)):
+            mensaje_descifrado += str(matriz[i][j])
+
+    mensaje_final=mensaje_descifrado.replace("-", "")
+
+    return print("Mensaje descifrado: " + mensaje_final)
