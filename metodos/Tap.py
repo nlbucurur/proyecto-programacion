@@ -26,7 +26,7 @@ def cifrar(mensaje):
     for letra in acifrar:
            
 
-           indice1 = (letrasy.index(letra)) / 5
+           indice1 = (1 + letrasy.index(letra)) / 5
            if indice1 <= 1:
                a = "1"
            elif indice1 > 1 and indice1 <= 2:
@@ -38,7 +38,7 @@ def cifrar(mensaje):
            elif indice1 > 4 and indice1 <= 5:
                a = "5"              
            
-           indice2 = (letrasx.index(letra)) / 5
+           indice2 = (1 + letrasx.index(letra)) / 5
            if indice2 <= 1:
                b = "1"
            elif indice2 > 1 and indice2 <= 2:
