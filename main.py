@@ -1,4 +1,4 @@
-from metodos import A1Z26, ascii, atbash, bacon, base64, binary, columnar, multiplicativo
+from metodos import A1Z26, ascii, atbash, bacon, base64, binary, columnar, multiplicativo, playfair
 from metodos import digraph, morse, rot, transposition
 
 print("Bienvenido al cifrador")
@@ -25,7 +25,7 @@ def quit():
 
 methods = {"A": A1Z26, "as": ascii, "at": atbash, "bac": bacon, "bas": base64,
            "bi": binary, "c": columnar, "d": digraph, "m": morse, "r": rot,
-           "t": transposition,"mul": multiplicativo, "s": quit, "ay": show_help}
+           "t": transposition,"mul": multiplicativo,"p": playfair, "s": quit, "ay": show_help}
 
 
 def run():
@@ -38,7 +38,8 @@ def run():
 [A]1Z26 \t [as]cii \t [at]bash
 [bac]on \t [bas]e64 \t [bi]nary
 [c]olumnar \t [d]igraph \t [m]orse
-[r]ot \t [mul]tiplicativo\t [t]ransposition 
+[r]ot \t [mul]tiplicative\t [t]ransposition 
+[p]layfair \t\t
 
 [ay]uda \t [s]alir
 
