@@ -159,8 +159,19 @@ img_list1=[ImageA1,ImageB1,ImageC1,ImageD1,ImageE1,ImageF1,ImageG1,
 #------------Botón para llamar un método de cifrado----------------------
 
 
+def clone(widget):
+    parent = widget.nametowidget(widget.winfo_parent())
+    clase = widget.__class__
+
+    clone = clase(parent)
+    for key in widget.configure():
+        #clone.configure
+        #clone.config( 
+            print({key: widget.cget(key)})
+    return clone
+
 boton_metodo=Button(root,text="Listo",command=lambda:InterfacesSecundarias.VentanaCifrado(root,
-                                        metodoElegido,lista_nom,ve1,ve2,img_list))
+                                        metodoElegido,lista_nom,ve1,ve2,img_list,img_list1))
 boton_metodo.config(cursor="hand2")
 boton_metodo.pack()#grid(row=7,column=1)
 

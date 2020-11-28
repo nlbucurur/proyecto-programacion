@@ -35,7 +35,7 @@ def CypherOrDecypher(textoCom1,textoCom2,metodoElegido,ve1):
 
 
 
-def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list): 
+def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1): 
     
     if metodoElegido.get()==0:
         messagebox.showinfo("Seleccionar","Por favor seleccione un método de cifrado")
@@ -113,7 +113,7 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list):
             
             croot.config(bg="#D6DBDF")
             #Tamaño de la nueva ventana
-            croot.geometry("1000x600")
+            croot.geometry("500x600")
             #-----------------Frames----------------
             frameI1=Frame(croot,width=500,height=200)
             frameI1.config(bg="light blue",width=500,height=200)
@@ -124,8 +124,8 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list):
             frameIText.grid(row=1,column=0)
             
             frameIImgC=Frame(croot,width=200,height=300)
-            frameIImgC.config(bg="pink")
-            frameIImgC.grid(row=1,column=1)
+            frameIImgC.config(bg="orange")
+            
             
             frameIImg=Frame(croot,width=200,height=300)
             frameIImg.config(bg="green")
@@ -195,32 +195,58 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list):
             botonZ=Button(frameIImg,image=img_list[25])
         
         
-            botonA.config(cursor="hand2")
-            botonB.config(cursor="hand2")
-            botonC.config(cursor="hand2")
-            botonD.config(cursor="hand2")
-            botonE.config(cursor="hand2")
-            botonF.config(cursor="hand2")
-            botonG.config(cursor="hand2")
-            botonH.config(cursor="hand2")
-            botonI.config(cursor="hand2")
-            botonJ.config(cursor="hand2")
-            botonK.config(cursor="hand2")
-            botonL.config(cursor="hand2")
-            botonM.config(cursor="hand2")
-            botonN.config(cursor="hand2")
-            botonO.config(cursor="hand2")
-            botonP.config(cursor="hand2")
-            botonQ.config(cursor="hand2")
-            botonR.config(cursor="hand2")
-            botonS.config(cursor="hand2")
-            botonT.config(cursor="hand2")
-            botonU.config(cursor="hand2")
-            botonV.config(cursor="hand2")
-            botonW.config(cursor="hand2")
-            botonX.config(cursor="hand2")
-            botonY.config(cursor="hand2")
-            botonZ.config(cursor="hand2")
+            botonA.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,1,lista_botones,img_list))
+            botonB.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonC.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonD.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonE.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonF.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonG.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonH.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonI.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonJ.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonK.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonL.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonM.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonN.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonO.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonP.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonQ.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonR.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonS.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonT.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonU.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonV.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonW.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonX.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonY.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
+            botonZ.config(cursor="hand2",command=lambda:braille.CorD_braille
+                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
         
             botonA.grid(row=0,column=0,padx=2,pady=2)
             botonB.grid(row=0,column=1,padx=2,pady=2)
@@ -251,15 +277,21 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list):
             lista_botones=[botonA,botonB,botonC,botonD,botonE,botonF,botonG,botonH,botonI,botonJ,
                            botonK,botonL,botonM,botonN,botonO,botonP,botonQ,botonR,botonS,botonT,
                            botonU,botonV,botonW,botonX,botonY,botonZ]
-
+            
+           
             #-------------Button---------------
-                
-            botonCorD=Button(frameButton,text="Ejecutar",command=lambda:braille.CorD_braille
-                             (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones))
-            botonCorD.config(cursor="hand2")
-            botonCorD.grid(row=5,column=0,padx=15,pady=15)
+            if metodoElegido.get()==15:  
+                botonCorD=Button(frameButton,text="Ejecutar",command=lambda:braille.CorD_braille
+                             (croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,ve2,lista_botones,img_list))
+                botonCorD.config(cursor="hand2")
+                botonCorD.grid(row=5,column=0,padx=15,pady=15)
             #nota: al poner cualquier letra existente en este punto se muestran las imagenes
             #Razón desconocida
+            else:  
+                botonCorD=Button(frameButton,text="Ejecutar",command=lambda:braille.CorD_braille
+                             (croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,ve2,lista_botones,img_list1))
+                botonCorD.config(cursor="hand2")
+                botonCorD.grid(row=5,column=0,padx=15,pady=15)
             
         else:
             print("Cifrado con Imagenes")
