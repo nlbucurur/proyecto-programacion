@@ -54,3 +54,37 @@ def cifrar(mensaje):
             
            
     return ' '.join(mensaje_cifrado)
+
+
+def descifrar(mensaje):
+    letras = mensaje.split(" ")
+    mensaje_descifrado=[]
+    alfabeto = "ABCDEFGHIKLMNOPQRSTUVWXYZ"
+    for i in letras:
+        letra = list(i)
+        
+        if letra[0] == "1":
+            alfabeto_sub = alfabeto[0:5]
+            letra_descifrada = alfabeto_sub[int(letra[1])-1]
+            
+        if letra[0] == "2":
+            alfabeto_sub = alfabeto[5:10]
+            letra_descifrada = alfabeto_sub[int(letra[1])-1]
+            
+        if letra[0] == "3":
+            alfabeto_sub = alfabeto[10:15]
+            letra_descifrada = alfabeto_sub[int(letra[1])-1]
+        
+        if letra[0] == "4":
+            alfabeto_sub = alfabeto[15:20]
+            letra_descifrada = alfabeto_sub[int(letra[1])-1]
+        
+        if letra[0] == "5":
+            alfabeto_sub = alfabeto[20:25]
+            letra_descifrada = alfabeto_sub[int(letra[1])-1]            
+        
+        mensaje_descifrado.append(letra_descifrada)
+          
+    return ' '.join(mensaje_descifrado)
+
+
