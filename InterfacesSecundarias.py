@@ -244,12 +244,12 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1):
             #----------------Radiobuttons-----------
             
             RbC=Radiobutton(frameI1,text="Cifrar",variable=ve1,value=1,command=lambda:
-                            braille.CorD_brailleInterface(frameIImgC,frameIImg,ve1))
+                            CorD_brailleInterface(frameIImgC,frameIImg,ve1))
             RbC.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC")
             RbC.grid(row=1,column=0)
 
             RbD=Radiobutton(frameI1,text="Descifrar",variable=ve1,value=2,command=lambda:
-                            braille.CorD_brailleInterface(frameIImgC,frameIImg,ve1))
+                            CorD_brailleInterface(frameIImgC,frameIImg,ve1))
             RbD.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");
             RbD.grid(row=1,column=1)
             
@@ -302,7 +302,7 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1):
             botonZ=Button(frameIImg,image=img_list[25])
         
         
-            botonA.config(cursor="hand2",command=lambda:braille.CorD_braille
+            botonA.config(cursor="hand2",command=lambda:CorD_braille
                              (croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,1,lista_botones,img_list))
             botonB.config(cursor="hand2",command=lambda:braille.CorD_braille
                              (textoCom,frameIImg,metodoElegido,ve1,ve2,lista_botones,img_list))
@@ -387,15 +387,15 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1):
             
            
             #-------------Button---------------
-            if metodoElegido.get()==15:  
-                botonCorD=Button(frameButton,text="Ejecutar",command=lambda:braille.CorD_braille
+            if metodoElegido.get()==17:  
+                botonCorD=Button(frameButton,text="Ejecutar",command=lambda:CorD_braille
                              (croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,ve2,lista_botones,img_list))
                 botonCorD.config(cursor="hand2")
                 botonCorD.grid(row=5,column=0,padx=15,pady=15)
             #nota: al poner cualquier letra existente en este punto se muestran las imagenes
             #Razón desconocida
             else:  
-                botonCorD=Button(frameButton,text="Ejecutar",command=lambda:braille.CorD_braille
+                botonCorD=Button(frameButton,text="Ejecutar",command=lambda:CorD_braille
                              (croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,ve2,lista_botones,img_list1))
                 botonCorD.config(cursor="hand2")
                 botonCorD.grid(row=5,column=0,padx=15,pady=15)
@@ -405,4 +405,65 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1):
 
         
 
+#---------------Funciones adicionales para metodos de imagenes
+
+#-----------------Funciones utilizadas en el método Braille-----------
+
+abc_braille=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+
+
+def CorD_braille(croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,ve2,lista_botones,img_list):
+        
+    if ve1.get()==1:
+        
+        frameIImgC.destroy()
+        """frameIImgC=Frame(croot)
+        frameIImgC.config(bg="red")
+        
+        mostrar=False;i=0;j=0;x=0
+        men_cif=textoCom.get("1.0",'end-1c') #el -1c es para eliminar un \n extra que toma el .get()
+        men_cif=men_cif.upper()
+
+        #LabelImg.delete("1.0","end")
+        while i<len(men_cif):
+            while j<len(img_list):
+                if men_cif[i]==abc_braille[j]:
+                    Label(frameIImgC,image=img_list[j]).grid(row=0,column=x)
+                    mostrar=True
+                    j=26
+                else:
+                    j+=1
+            x+=1
+            j=0
+            i+=1
+        if mostrar:
+            frameIImgC.grid(row=1,column=1)"""
+            
+    else:
+        label_im=Label(frameIImg,image=img_list[0])
+        men_decif=textoCom.get("1.0",'end-1c')
+        men_decif=men_decif.upper()
+        
+        label_im.grid(row=0,column=0)
+        #Text no tiene método .set por lo que se usará
+        #.delete para borrar el contenido del cuadro
+        #y luego se utilizará .insert para poner el mensaje
+        #LabelImg.delete(1.0,"end")
+        #LabelImg.insert(1.0,lista_met[metodoElegido.get()-1].descifrar(men_decif))
+"""op_label=[]
+label2=Label(root,image=Image1)
+op_label.append(labelx)"""
+
+def CorD_brailleInterface(frameIImgC,frameIImg,ve1):
+    if ve1.get()==1:
+        frameIImgC.grid(row=1,column=1)
+        #a=clone_(frameIImgC)
+        #print(a.__class__)
+        #print(frameIImgC.__class__)
+        #a.grid(row=3,column=3)
+        frameIImg.grid_forget()
+        
+    else:
+        frameIImg.grid(row=2,column=0)
+        frameIImgC.grid_forget()
 

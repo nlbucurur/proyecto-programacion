@@ -18,16 +18,16 @@ def clone_2(widget):
 
 #-----------------Funciones utilizadas en el método Braille-----------
 
-abc=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+abc_braille=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 
-
+"""
 def CorD_braille(croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,ve2,lista_botones,img_list):
         
     if ve1.get()==1:
         
         frameIImgC.destroy()
-        frameIImgC=Frame(croot)
-        frameIImgC.config(bg="blue")
+        frameIImgC2=Frame(croot)
+        frameIImgC2.config(bg="blue")
         
         mostrar=False;i=0;j=0;x=0
         men_cif=textoCom.get("1.0",'end-1c') #el -1c es para eliminar un \n extra que toma el .get()
@@ -36,8 +36,8 @@ def CorD_braille(croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,ve2,lista
         #LabelImg.delete("1.0","end")
         while i<len(men_cif):
             while j<len(img_list):
-                if men_cif[i]==abc[j]:
-                    Label(frameIImgC,image=img_list[j]).grid(row=0,column=x)
+                if men_cif[i]==abc_braille[j]:
+                    Label(frameIImgC2,image=img_list[j]).grid(row=0,column=x)
                     mostrar=True
                     j=26
                 else:
@@ -46,7 +46,7 @@ def CorD_braille(croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,ve2,lista
             j=0
             i+=1
         if mostrar:
-            frameIImgC.grid(row=1,column=1)
+            frameIImgC2.grid(row=1,column=1)
             
     else:
         label_im=Label(frameIImg,image=img_list[0])
@@ -59,9 +59,6 @@ def CorD_braille(croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,ve2,lista
         #y luego se utilizará .insert para poner el mensaje
         #LabelImg.delete(1.0,"end")
         #LabelImg.insert(1.0,lista_met[metodoElegido.get()-1].descifrar(men_decif))
-"""op_label=[]
-label2=Label(root,image=Image1)
-op_label.append(labelx)"""
 
 def CorD_brailleInterface(frameIImgC,frameIImg,ve1):
     if ve1.get()==1:
@@ -75,4 +72,5 @@ def CorD_brailleInterface(frameIImgC,frameIImg,ve1):
     else:
         frameIImg.grid(row=2,column=0)
         frameIImgC.grid_forget()
+        """
 
