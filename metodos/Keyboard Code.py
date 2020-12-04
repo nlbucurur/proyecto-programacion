@@ -9,7 +9,7 @@ def cifrar(mensaje):
     mensaje_cifrado = ''
     for letra in mensaje:
             mensaje_cifrado += keyboard[letra.lower()]
-    return print("Mensaje cifrado: " +mensaje_cifrado)
+    return mensaje_cifrado
 
 
 def descifrar(mensaje):
@@ -23,5 +23,5 @@ def descifrar(mensaje):
                 if j == letra:
                     palabra_descifrada += i
         mensaje_descifrado.append(palabra_descifrada)
-    return print(' '.join(mensaje_descifrado))
+    return ' '.join(mensaje_descifrado)
 
