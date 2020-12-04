@@ -6,10 +6,11 @@ Created on Wed Nov 18 18:27:42 2020
 """
 from tkinter import *
 from tkinter import messagebox
-from metodos import A1Z26, ascii, atbash, bacon, base64, binary,braille, columnar
-from metodos import digraph, morse, multiplicativo, rot,Tap, transposition, Vigenere
-lista_met=[A1Z26,ascii,atbash,bacon,base64,binary,columnar,digraph,
-           morse,multiplicativo,rot,Tap,transposition,Vigenere,braille]
+from metodos import A1Z26, ascii, atbash, bacon, base64, binary, digraph, braille, columnar,playfair
+from metodos import morse, multiplicativo, rot,Tap, transposition, Vigenere,Keyboard_Code
+
+lista_met=[A1Z26,ascii,atbash,bacon,base64,binary,digraph,Keyboard_Code,
+           morse,Tap,columnar,multiplicativo,playfair,rot,transposition,Vigenere,braille]
 
 
 #------------------Funcion que ejecuta la funcion de cifrado o descifrado-------------
@@ -29,6 +30,32 @@ def CypherOrDecypher(textoCom1,textoCom2,metodoElegido,ve1):
         #y luego se utilizará .insert para poner el mensaje
         textoCom2.delete(1.0,"end")
         textoCom2.insert(1.0,lista_met[metodoElegido.get()-1].descifrar(men_decif))
+        
+        
+#------------------Funcion que ejecuta la funcion de cifrado o descifrado CON CLAVES-------------
+def CorD_CLAVE(textoCom1,textoCom2,Clave,metodoElegido,ve1):
+        
+
+    if ve1.get()==1:
+        men_cif=textoCom1.get("1.0",'end-1c') #el -1c es para eliminar un \n extra que toma el .get()
+        clave=Clave.get()
+        textoCom2.delete("1.0","end")
+        if clave=='':
+            textoCom2.insert("1.0",lista_met[metodoElegido.get()-1].cifrar(men_cif))
+        else:
+            textoCom2.insert("1.0",lista_met[metodoElegido.get()-1].cifrar(men_cif,clave))
+            
+    else:
+        men_decif=textoCom1.get("1.0",'end-1c')
+        clave=Clave.get()
+        #Text no tiene método .set por lo que se usará
+        #.delete para borrar el contenido del cuadro
+        #y luego se utilizará .insert para poner el mensaje
+        textoCom2.delete(1.0,"end")
+        if clave=='':
+            textoCom2.insert(1.0,lista_met[metodoElegido.get()-1].descifrar(men_decif))
+        else:
+            textoCom2.insert(1.0,lista_met[metodoElegido.get()-1].descifrar(men_decif,clave))
 
 
 #---------------Funcion que abre una nueva ventana donde se cifra y descifra un mensaje------------
@@ -48,7 +75,10 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1):
         croot.iconbitmap("img\VCypher.ico")
         croot.title((lista_nom[metodoElegido.get()-1])+" cypher") 
         
-        if metodoElegido.get()<15:
+        #-------------Transformacion----------------------------------------------------
+        
+        
+        if metodoElegido.get()<11:
             
             croot.config(bg="light blue")
             #Tamaño de la nueva ventana
@@ -108,8 +138,85 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1):
             botonCorD=Button(frameButton,text="Ejecutar",command=lambda:CypherOrDecypher(textoCom1,textoCom2,metodoElegido,ve1))
             botonCorD.config(cursor="hand2")
             botonCorD.pack()
-        #---------------------Caso Braille------------------------
+            
+            
+        #---------------------Clave------------------------------------------------------------------------
+        
+        
         elif metodoElegido.get()<17:
+            
+            croot.config(bg="light blue")
+            #Tamaño de la nueva ventana
+            #croot.geometry("1000x600")
+            #-----------------Frames----------------
+            frameI1=Frame(croot,width=500,height=200)
+            frameI1.config(bg="#EEFBFC",width=500,height=200)
+            frameI1.grid(row=0,column=0,columnspan=3,padx=10,pady=5)
+            
+            frameIText1=Frame(croot)#,width=200,height=10)
+            frameIText1.config(bg="red")
+            frameIText1.grid(row=1,column=0,padx=10,pady=10)
+            
+            frameIText2=Frame(croot)
+            frameIText2.config(bg="green")
+            frameIText2.grid(row=1,column=2,padx=10,pady=10)
+            
+            frameIClave=Frame(croot)
+            frameIClave.grid(row=2,column=0,padx=10,pady=10,columnspan=3)
+            
+            frameButton=Frame(croot)
+            frameButton.grid(row=3,column=0,padx=10,pady=15,columnspan=3)
+            
+            #----------------Cuadros de texto----------------
+            Label(frameI1,text="       Por favor elige una de las opciones           ").grid(row=0,column=0,columnspan=2)
+            
+            textoCom1=Text(frameIText1,width=30,height=12)
+            textoCom1.grid(row=1,column=0,padx=10,pady=10)
+
+            textoCom2=Text(frameIText2,width=30,height=12)
+            textoCom2.grid(row=1,column=0,padx=10,pady=10)
+            
+            textoClave=Entry(frameIClave)
+            textoClave.grid(row=0,column=0)
+            
+            #-------------Barras de scroll------------
+            
+            #Para agregar una barra de scrollbar al texto
+            scrollTexto1=Scrollbar(frameIText1,command=textoCom1.yview)
+            #.yview es para la vista vertical
+            scrollTexto1.grid(row=1,column=1,sticky="nsew")
+            #Con sticky="nscw" se adapta al tamaño del widgeth al que pertenece
+            textoCom1.config(yscrollcommand=scrollTexto1.set)
+            
+            scrollTexto2=Scrollbar(frameIText2,command=textoCom2.yview)
+            scrollTexto2.grid(row=1,column=1,sticky="nsew")
+            textoCom2.config(yscrollcommand=scrollTexto2.set)
+            
+            #----------------Radiobuttons-----------
+            
+            RbC=Radiobutton(frameI1,text="Cifrar",variable=ve1,value=1)
+            RbC.config(cursor="hand2",padx=10,pady=10,bg="#EEFBFC")
+            RbC.grid(row=1,column=0)
+
+            RbD=Radiobutton(frameI1,text="Descifrar",variable=ve1,value=2)
+            RbD.config(cursor="hand2",padx=10,pady=10,bg="#EEFBFC");
+            RbD.grid(row=1,column=1)
+            
+            
+            
+            #-------------Button---------------
+            
+            botonCorD=Button(frameButton,text="Ejecutar",command=lambda:CorD_CLAVE(textoCom1,textoCom2,textoClave,
+                                                                                   metodoElegido,ve1))
+            botonCorD.config(cursor="hand2")
+            botonCorD.pack()
+        
+        
+        #---------------------Caso Braille-----------------------------------------------------------------------
+        
+        
+        
+        elif metodoElegido.get()<21:
             
             croot.config(bg="#D6DBDF")
             #Tamaño de la nueva ventana

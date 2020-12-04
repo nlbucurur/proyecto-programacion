@@ -3,7 +3,7 @@ def cifrar(mensaje, llave=7):
     mensaje_cifrado = ""
     mensaje_en_txt_plano = mensaje.strip()
     mensaje_en_txt_plano = mensaje_en_txt_plano.upper()
-    k = llave
+    k = int(llave)
     try:
         for i in mensaje_en_txt_plano.split():
             for j in i:
@@ -18,7 +18,7 @@ def descifrar(mensaje, llave=7):
     mensaje_en_txt_plano = ""
     mensaje_cifrado = mensaje.strip()
     mensaje_cifrado = mensaje_cifrado.upper()
-    k = inverso(llave)
+    k = inverso(int(llave))
 
     try:
         if True:
@@ -27,7 +27,6 @@ def descifrar(mensaje, llave=7):
                     total = (((ord(j) - 65) * k) % 26)
                     mensaje_en_txt_plano = mensaje_en_txt_plano + (chr(total + 65))
                 mensaje_en_txt_plano = mensaje_en_txt_plano + " "
-            print("El mensaje sin cifrar es: ", mensaje_en_txt_plano.upper())
     except:
         print("Algo salió mal")
     return mensaje_en_txt_plano

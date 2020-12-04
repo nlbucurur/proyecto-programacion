@@ -7,19 +7,22 @@ Created on Mon Nov 16 18:17:25 2020
 
 from tkinter import *
 from tkinter import messagebox
-from metodos import A1Z26, ascii, atbash, bacon, base64, binary,braille, columnar
-from metodos import digraph, morse,multiplicativo, rot, transposition
 import InterfacesSecundarias
-#lista_met=[A1Z26,ascii,atbash,bacon,base64,binary,braille,columnar,
-           #digraph,morse,multiplicativo,rot,transposition,braille]
-lista_nom=["A1Z26","Ascii","Atbash","Bacon","Base64","Binary","Columnar",
-           "Digraph","Morse","Multiplicativo","Rot","Tap","Transposition","Vigenere","Braille","Dorabella"]
+           
+          #--------------Transformacion
+lista_nom=["A1Z26","Ascii","Atbash","Bacon","Base64","Binary",
+           "Digraph","Keyboard code","Morse","Tap",
+          #--------------Clave
+          "Columnar","Multiplicativo","Playfair","Rot","Transposition","Vigenere",
+          #--------------Imagen
+           "Braille","Dorabella","Rosicrucian"]
+
 
 root=Tk()
 root.title("Proyecto programación | Encriptado y Desencriptado") #Nombre que aparece en la ventana
 root.iconbitmap("img\VCypher.ico")  #Permite elegir el icono de la esquina superior izquierda
 root.resizable(0,0)
-root.geometry("500x450") #Tamaño por defecto de la ventana principal
+root.geometry("500x550") #Tamaño por defecto de la ventana principal
 
 root.config(bg="#D0ECE7",bd="15",relief="groove") #Color de fondo, tamaño del borde y 
 #tipo de borde de la raíz de la interfaz respectivamente
@@ -38,7 +41,7 @@ metodoElegido=IntVar()
 
 R_A1Z26=Radiobutton(frame1,text="A1Z26",variable=metodoElegido,value=1)
 R_A1Z26.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_A1Z26.grid(row=1,column=0)
-#pack
+
 R_Ascii=Radiobutton(frame1,text="Ascii",variable=metodoElegido,value=2)
 R_Ascii.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Ascii.grid(row=2,column=0)
 
@@ -54,35 +57,44 @@ R_Base64.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Base64.grid(row=5
 R_Binary=Radiobutton(frame1,text="Binary",variable=metodoElegido,value=6)
 R_Binary.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Binary.grid(row=6,column=0)
 
-R_Braille=Radiobutton(frame1,text="Braille",variable=metodoElegido,value=15)
+R_Braille=Radiobutton(frame1,text="Braille",variable=metodoElegido,value=17)
 R_Braille.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Braille.grid(row=7,column=0)
 
-R_Columnar=Radiobutton(frame1,text="Columnar",variable=metodoElegido,value=7)
+R_Columnar=Radiobutton(frame1,text="Columnar",variable=metodoElegido,value=11)
 R_Columnar.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Columnar.grid(row=8,column=0)
 
-R_Digraph=Radiobutton(frame1,text="Digraph",variable=metodoElegido,value=8)
-R_Digraph.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Digraph.grid(row=1,column=2)
+R_Digraph=Radiobutton(frame1,text="Digraph",variable=metodoElegido,value=7)
+R_Digraph.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Digraph.grid(row=9,column=0)
 
-R_Dorabella=Radiobutton(frame1,text="Dorabella",variable=metodoElegido,value=16)
-R_Dorabella.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Dorabella.grid(row=2,column=2)
+R_Dorabella=Radiobutton(frame1,text="Dorabella",variable=metodoElegido,value=18)
+R_Dorabella.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Dorabella.grid(row=10,column=0)
+
+R_Keyboard=Radiobutton(frame1,text="Keyboard",variable=metodoElegido,value=8)
+R_Keyboard.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Keyboard.grid(row=1,column=2)
 
 R_Morse=Radiobutton(frame1,text="Morse",variable=metodoElegido,value=9)
-R_Morse.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Morse.grid(row=3,column=2)
+R_Morse.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Morse.grid(row=2,column=2)
 
-R_Multiplicativo=Radiobutton(frame1,text="Multiplicativo",variable=metodoElegido,value=10)
-R_Multiplicativo.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Multiplicativo.grid(row=4,column=2)
+R_Multiplicativo=Radiobutton(frame1,text="Multiplicativo",variable=metodoElegido,value=12)
+R_Multiplicativo.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Multiplicativo.grid(row=3,column=2)
 
-R_Rot=Radiobutton(frame1,text="Rot",variable=metodoElegido,value=11)
-R_Rot.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Rot.grid(row=5,column=2)
+R_Playfair=Radiobutton(frame1,text="Playfair",variable=metodoElegido,value=13)
+R_Playfair.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Playfair.grid(row=4,column=2)
 
-R_Tap=Radiobutton(frame1,text="Tap",variable=metodoElegido,value=12)
-R_Tap.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Tap.grid(row=6,column=2)
+R_Rosicrucian=Radiobutton(frame1,text="Rosicrucian",variable=metodoElegido,value=19)
+R_Rosicrucian.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Rosicrucian.grid(row=5,column=2)
 
-R_Transposition=Radiobutton(frame1,text="Transposition",variable=metodoElegido,value=13)
-R_Transposition.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Transposition.grid(row=7,column=2)
+R_Rot=Radiobutton(frame1,text="Rot",variable=metodoElegido,value=14)
+R_Rot.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Rot.grid(row=6,column=2)
 
-R_Vigerene=Radiobutton(frame1,text="Vigenere",variable=metodoElegido,value=14)
-R_Vigerene.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Vigerene.grid(row=8,column=2)
+R_Tap=Radiobutton(frame1,text="Tap",variable=metodoElegido,value=10)
+R_Tap.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Tap.grid(row=7,column=2)
+
+R_Transposition=Radiobutton(frame1,text="Transposition",variable=metodoElegido,value=15)
+R_Transposition.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Transposition.grid(row=8,column=2)
+
+R_Vigerene=Radiobutton(frame1,text="Vigenere",variable=metodoElegido,value=16)
+R_Vigerene.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Vigerene.grid(row=9,column=2)
 
 
 #------------Lista que almacena IntVar()----------
