@@ -8,7 +8,7 @@ Created on Mon Nov 23 18:10:23 2020
 #-----------> Se genera la tabla de Vigenere
 
 
-def cifrar(mensaje, clave):
+def cifrar(mensaje, clave="abc" ):
     
     mensaje_cifrado = []
     mensaje1 = mensaje.split()
@@ -36,7 +36,7 @@ def cifrar(mensaje, clave):
     return ''.join(mensaje_cifrado)
 
 
-def descifrar(mensaje, clave):
+def descifrar(mensaje, clave= "abc" ):
     mensaje_descifrado = []
     alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     mensaje_upper = list(mensaje.upper())
