@@ -17,8 +17,8 @@ def ubicacion(palabra, lista_de_numeros): #Toma la ubicacion de los numeros
                 posicion += str(j)
     return posicion
 
-def cifrar(mensaje1):
-    clave = input("Introduce una palabra clave: ")
+def cifrar(mensaje1,clave1):
+    clave = clave1.replace(" ", "")
     mensaje = (mensaje1.replace(" ", "")).lower()
     numero_asignado = asignar_numero(clave)
 
@@ -66,9 +66,9 @@ def cifrar(mensaje1):
 
 
 
-def descifrar(mensaje1):
+def descifrar(mensaje1, clave1):
     mensaje = (mensaje1.replace(" ", "")).lower()
-    clave = input("Introduce la palabra clave: ").lower()
+    clave = (clave1.replace(" ", "")).lower()
     numero_asignado = asignar_numero(clave)
     print('')
     filas = int(len(mensaje) / len(clave)) #Encuentra el numero de filas que debe haber en la matriz
