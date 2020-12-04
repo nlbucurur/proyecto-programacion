@@ -5,7 +5,7 @@ Created on Sun Nov 15 13:24:26 2020
 @author: S
 """
 
-def cifrar(mensaje, s=3):
+def cifrar(mensaje, s=13):
     MAYUSCULA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     minuscula = "abcdefghijklmnopqrstuvwxyz"
     palabras = mensaje.split(" ")
