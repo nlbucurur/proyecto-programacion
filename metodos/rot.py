@@ -31,7 +31,7 @@ def cifrar(mensaje, s):
 
     return ' '.join(mensaje_cifrado)
 
-def descifrar_letra(mensaje, s):
+def descifrar(mensaje, s=13):
     MAYUSCULA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     minuscula = "abcdefghijklmnopqrstuvwxyz"
     palabras = mensaje.split(" ")
@@ -57,10 +57,3 @@ def descifrar_letra(mensaje, s):
 
 
     return ' '.join(mensaje_descifrado)
-
-
-def descifrar(mensaje):
-    for s in range(0,27):
-        print("Con ", s, " rotaciones, se tiene el mensaje: ", descifrar_letra(mensaje, s))
-
-    return
