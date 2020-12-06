@@ -62,7 +62,7 @@ def CorD_CLAVE(textoCom1,textoCom2,Clave,metodoElegido,ve1):
 
 
 
-def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1): 
+def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1,img_list2): 
     
     if metodoElegido.get()==0:
         messagebox.showinfo("Seleccionar","Por favor seleccione un método de cifrado")
@@ -394,9 +394,14 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1):
                 botonCorD.grid(row=5,column=0,padx=15,pady=15)
             #nota: al poner cualquier letra existente en este punto se muestran las imagenes
             #Razón desconocida
-            else:  
+            elif metodoElegido.get()==18:  
                 botonCorD=Button(frameButton,text="Ejecutar",command=lambda:CorD_braille
                              (croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,ve2,lista_botones,img_list1))
+                botonCorD.config(cursor="hand2")
+                botonCorD.grid(row=5,column=0,padx=15,pady=15)
+            else:
+                botonCorD=Button(frameButton,text="Ejecutar",command=lambda:CorD_braille
+                             (croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,ve2,lista_botones,img_list2))
                 botonCorD.config(cursor="hand2")
                 botonCorD.grid(row=5,column=0,padx=15,pady=15)
             
@@ -417,10 +422,10 @@ def CorD_braille(croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,ve2,lista
     if ve1.get()==1:
         
         frameIImgC.destroy()
-        """frameIImgC=Frame(croot)
+        frameIImgC=Frame(croot)
         frameIImgC.config(bg="red")
         
-        mostrar=False;i=0;j=0;x=0
+        mostrar=False;i=0;j=0;x=0;y=0
         men_cif=textoCom.get("1.0",'end-1c') #el -1c es para eliminar un \n extra que toma el .get()
         men_cif=men_cif.upper()
 
@@ -428,7 +433,10 @@ def CorD_braille(croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,ve2,lista
         while i<len(men_cif):
             while j<len(img_list):
                 if men_cif[i]==abc_braille[j]:
-                    Label(frameIImgC,image=img_list[j]).grid(row=0,column=x)
+                    if x==5:
+                        y+=1
+                        x=0
+                    Label(frameIImgC,image=img_list[j]).grid(row=y,column=x)
                     mostrar=True
                     j=26
                 else:
@@ -437,7 +445,7 @@ def CorD_braille(croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,ve2,lista
             j=0
             i+=1
         if mostrar:
-            frameIImgC.grid(row=1,column=1)"""
+            frameIImgC.grid(row=1,column=1)
             
     else:
         label_im=Label(frameIImg,image=img_list[0])

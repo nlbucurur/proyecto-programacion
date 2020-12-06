@@ -168,6 +168,40 @@ img_list1=[ImageA1,ImageB1,ImageC1,ImageD1,ImageE1,ImageF1,ImageG1,
           ImageH1,ImageI_J1,ImageK1,ImageL1,ImageM1,ImageN1,
           ImageO1,ImageP1,ImageQ1,ImageR1,ImageS1,ImageT1,ImageU_V1,
           ImageW1,ImageX1,ImageY1,ImageZ1]  
+
+#--------Lista de imagenes para método Rosicrucian
+
+ImageA2=PhotoImage(file="img\Rosicrucian\A.png").subsample(10)
+ImageB2=PhotoImage(file="img\Rosicrucian\B.png").subsample(10)
+ImageC2=PhotoImage(file="img\Rosicrucian\C.png").subsample(10)
+ImageD2=PhotoImage(file="img\Rosicrucian\D.png").subsample(10)
+ImageE2=PhotoImage(file="img\Rosicrucian\E.png").subsample(10)
+ImageF2=PhotoImage(file="img\Rosicrucian\F.png").subsample(10)
+ImageG2=PhotoImage(file="img\Rosicrucian\G.png").subsample(10)
+ImageH2=PhotoImage(file="img\Rosicrucian\H.png").subsample(10)
+ImageI2=PhotoImage(file="img\Rosicrucian\I.png").subsample(10)
+ImageJ2=PhotoImage(file="img\Rosicrucian\J.png").subsample(10)
+ImageK2=PhotoImage(file="img\Rosicrucian\K.png").subsample(10)
+ImageL2=PhotoImage(file="img\Rosicrucian\L.png").subsample(10)
+ImageM2=PhotoImage(file="img\Rosicrucian\M.png").subsample(10)
+ImageN2=PhotoImage(file="img\Rosicrucian\M_N.png").subsample(10)
+ImageO2=PhotoImage(file="img\Rosicrucian\O.png").subsample(10)
+ImageP2=PhotoImage(file="img\Rosicrucian\P.png").subsample(10)
+ImageQ2=PhotoImage(file="img\Rosicrucian\Q.png").subsample(10)
+ImageR2=PhotoImage(file="img\Rosicrucian\R.png").subsample(10)
+ImageS2=PhotoImage(file="img\Rosicrucian\S.png").subsample(10)
+ImageT2=PhotoImage(file="img\Rosicrucian\T.png").subsample(10)
+ImageU2=PhotoImage(file="img\Rosicrucian\T_U.png").subsample(10)
+ImageV2=PhotoImage(file="img\Rosicrucian\V.png").subsample(10)
+ImageW2=PhotoImage(file="img\Rosicrucian\W.png").subsample(10)
+ImageX2=PhotoImage(file="img\Rosicrucian\X.png").subsample(10)
+ImageY2=PhotoImage(file="img\Rosicrucian\Y.png").subsample(10)
+ImageZ2=PhotoImage(file="img\Rosicrucian\Z.png").subsample(10)
+img_list2=[ImageA2,ImageB2,ImageC2,ImageD2,ImageE2,ImageF2,ImageG2,
+          ImageH2,ImageI2,ImageJ2,ImageK2,ImageL2,ImageM2,ImageN2,
+          ImageO2,ImageP2,ImageQ2,ImageR2,ImageS2,ImageT2,ImageU2,
+          ImageV2,ImageW2,ImageX2,ImageY2,ImageZ2]
+
 #------------Botón para llamar un método de cifrado----------------------
 
 
@@ -183,7 +217,7 @@ def clone(widget):
     return clone
 
 boton_metodo=Button(root,text="Listo",command=lambda:InterfacesSecundarias.VentanaCifrado(root,
-                                        metodoElegido,lista_nom,ve1,ve2,img_list,img_list1))
+                                        metodoElegido,lista_nom,ve1,ve2,img_list,img_list1,img_list2))
 boton_metodo.config(cursor="hand2")
 boton_metodo.pack()#grid(row=7,column=1)
 
