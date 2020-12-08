@@ -74,6 +74,7 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1,img_l
         croot = Toplevel(root)  
         croot.iconbitmap("img\VCypher.ico")
         croot.title((lista_nom[metodoElegido.get()-1])+" cypher") 
+        croot.resizable(0,0)
         
         #-------------Transformacion----------------------------------------------------
         
@@ -83,6 +84,7 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1,img_l
             croot.config(bg="light blue")
             #Tamaño de la nueva ventana
             #croot.geometry("1000x600")
+            
             #-----------------Frames----------------
             frameI1=Frame(croot,width=500,height=200)
             frameI1.config(bg="#EEFBFC",width=500,height=200)
@@ -234,7 +236,7 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1,img_l
             
             frameIImgC=Frame(croot,width=200,height=300)
             frameIImgC.config(bg="orange")
-            
+            frameIImgC.grid(row=1,column=1)
             
             frameIImg=Frame(croot,width=200,height=300)
             frameIImg.config(bg="green")
