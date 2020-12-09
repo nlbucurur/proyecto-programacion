@@ -23,17 +23,19 @@ root.iconbitmap("img\VCypher.ico")  #Permite elegir el icono de la esquina super
 root.resizable(0,0)
 root.geometry("600x370") #Tamaño por defecto de la ventana principal
 
-root.config(bg="#D0ECE7",bd="15",relief="groove") #Color de fondo, tamaño del borde y 
+root.config(bg="#26C6DA",bd="15",relief="groove") #Color de fondo, tamaño del borde y 
 #tipo de borde de la raíz de la interfaz respectivamente
 frame1=Frame()
-frame1.config(bg="#49CDB6",width="450",
+frame1.config(bg="#D0ECE7",width="450",
               height="450")
+#Me gusta #26C6DA
+#D0ECE7
 frame1.pack()
 #frame1.grid(row=0,column=5,columnspan=1)
 #Texto inicial
-Label(frame1,text="                             Por favor elige el método de encriptado segun la preferencia                             ").grid(
-    row=0,column=0,columnspan=5) 
-
+l1=Label(frame1,text="                             Por favor elige el método de encriptado segun la preferencia                             ")
+l1.grid(row=0,column=0,columnspan=5) 
+l1.config(bg="gray")
 Label(frame1,text="                                                                    Transformacion                                                                    ").grid(
     row=1,column=0,columnspan=5)
 Label(frame1,text="                                                     Métodos que requieren una llave                                                     ").grid(
@@ -42,73 +44,116 @@ Label(frame1,text="                                           Métodos que invol
     row=7,column=0,columnspan=5)
 
 
-#-------------radiobuttons---------------
+#-------------Menu----------------------------------------------
+def infoAdicional():
+    messagebox.showinfo("Barra superior","Cuadro interior")
+def avisoAdvertencia():
+    messagebox.showwarning("Barra superior","error x")
+def Terminar():
+    valor=messagebox.askquestion("Salir","Desea salir de la aplicación?")
+    if valor=="yes":
+        root.destroy()
+#Con messagebox.askquestion("a","b") aparece "si" o "no"
+#Con .askokcancel aparece "ok" o "cancel" pero esto
+#retorna 1 o 0 respectivamente
+#.askretrycancel retorna 1 o 0 (True or False)
+
+#Con filedialog se buscará codificar o descodificar documentos
+
+barraMenu=Menu(root)
+root.config(menu=barraMenu)
+#Con root.config parametro menu construye el menu
+
+archivoMenu=Menu(barraMenu, tearoff=0)
+#Con tearoff=0 desaparece el separador de la pestaña de una opcion
+archivoMenu.add_command(label="Op1",command=infoAdicional)
+archivoMenu.add_command(label="Op2",command=avisoAdvertencia)
+archivoMenu.add_command(label="Op3")
+
+#Separador
+archivoMenu.add_separator()
+
+archivoMenu.add_command(label="Salir",command=Terminar)
+#con esto especificamos que el menu la opcion
+#archivo perteneza a otro menu
+archivoEdicion=Menu(barraMenu)
+archivoHerramientas=Menu(barraMenu)
+archivoAyuda=Menu(barraMenu)
+
+barraMenu.add_cascade(label="Archivo",menu=archivoMenu)
+#Primer parametro, texto que va a tener el primer elemento del menu
+#Segundo parametro que elemento alberga este archivo
+barraMenu.add_cascade(label="Edicion",menu=archivoEdicion)
+barraMenu.add_cascade(label="Herramientas",menu=archivoHerramientas)
+barraMenu.add_cascade(label="Ayuda",menu=archivoAyuda)
+
+#-------------radiobuttons---------------------------------------------------
 
 metodoElegido=IntVar()
 
 #---------Transformaciones
 
 R_A1Z26=Radiobutton(frame1,text="A1Z26",variable=metodoElegido,value=1)
-R_A1Z26.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_A1Z26.grid(row=2,column=0)
+R_A1Z26.config(cursor="hand2",padx=10,pady=10,bg="#D0ECE7");R_A1Z26.grid(row=2,column=0)
 
 R_Ascii=Radiobutton(frame1,text="Ascii",variable=metodoElegido,value=2)
-R_Ascii.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Ascii.grid(row=2,column=1)
+R_Ascii.config(cursor="hand2",padx=10,pady=10,bg="#D0ECE7");R_Ascii.grid(row=2,column=1)
 
 R_Atbash=Radiobutton(frame1,text="Atbash",variable=metodoElegido,value=3)
-R_Atbash.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Atbash.grid(row=2,column=2)
+R_Atbash.config(cursor="hand2",padx=10,pady=10,bg="#D0ECE7");R_Atbash.grid(row=2,column=2)
 
 R_Bacon=Radiobutton(frame1,text="Bacon",variable=metodoElegido,value=4)
-R_Bacon.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Bacon.grid(row=2,column=3)
+R_Bacon.config(cursor="hand2",padx=10,pady=10,bg="#D0ECE7");R_Bacon.grid(row=2,column=3)
 
 R_Base64=Radiobutton(frame1,text="Base64",variable=metodoElegido,value=5)
-R_Base64.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Base64.grid(row=2,column=4)
+R_Base64.config(cursor="hand2",padx=10,pady=10,bg="#D0ECE7");R_Base64.grid(row=2,column=4)
 
 R_Binary=Radiobutton(frame1,text="Binary",variable=metodoElegido,value=6)
-R_Binary.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Binary.grid(row=3,column=0)
+R_Binary.config(cursor="hand2",padx=10,pady=10,bg="#D0ECE7");R_Binary.grid(row=3,column=0)
 
 R_Digraph=Radiobutton(frame1,text="Digraph",variable=metodoElegido,value=7)
-R_Digraph.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Digraph.grid(row=3,column=1)
+R_Digraph.config(cursor="hand2",padx=10,pady=10,bg="#D0ECE7");R_Digraph.grid(row=3,column=1)
 
 R_Keyboard=Radiobutton(frame1,text="Keyboard",variable=metodoElegido,value=8)
-R_Keyboard.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Keyboard.grid(row=3,column=2)
+R_Keyboard.config(cursor="hand2",padx=10,pady=10,bg="#D0ECE7");R_Keyboard.grid(row=3,column=2)
 
 R_Morse=Radiobutton(frame1,text="Morse",variable=metodoElegido,value=9)
-R_Morse.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Morse.grid(row=3,column=3)
+R_Morse.config(cursor="hand2",padx=10,pady=10,bg="#D0ECE7");R_Morse.grid(row=3,column=3)
 
 R_Tap=Radiobutton(frame1,text="Tap",variable=metodoElegido,value=10)
-R_Tap.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Tap.grid(row=3,column=4)
+R_Tap.config(cursor="hand2",padx=10,pady=10,bg="#D0ECE7");R_Tap.grid(row=3,column=4)
 
 #----------Clave
 
 R_Columnar=Radiobutton(frame1,text="Columnar",variable=metodoElegido,value=11)
-R_Columnar.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Columnar.grid(row=5,column=0)
+R_Columnar.config(cursor="hand2",padx=10,pady=10,bg="#D0ECE7");R_Columnar.grid(row=5,column=0)
 
 R_Multiplicativo=Radiobutton(frame1,text="Multiplicativo",variable=metodoElegido,value=12)
-R_Multiplicativo.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Multiplicativo.grid(row=5,column=2)
+R_Multiplicativo.config(cursor="hand2",padx=10,pady=10,bg="#D0ECE7");R_Multiplicativo.grid(row=5,column=2)
 
 R_Playfair=Radiobutton(frame1,text="Playfair",variable=metodoElegido,value=13)
-R_Playfair.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Playfair.grid(row=5,column=4)
+R_Playfair.config(cursor="hand2",padx=10,pady=10,bg="#D0ECE7");R_Playfair.grid(row=5,column=4)
 
 
-R_Rot=Radiobutton(frame1,text="Rot",variable=metodoElegido,value=14)
-R_Rot.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Rot.grid(row=6,column=0)
+R_Rot=Radiobutton(frame1,text="   Rot   ",variable=metodoElegido,value=14)
+R_Rot.config(cursor="hand2",padx=10,pady=10,bg="#D0ECE7");R_Rot.grid(row=6,column=0)
 
 R_Transposition=Radiobutton(frame1,text="Transposition",variable=metodoElegido,value=15)
-R_Transposition.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Transposition.grid(row=6,column=2)
+R_Transposition.config(cursor="hand2",padx=10,pady=10,bg="#D0ECE7");R_Transposition.grid(row=6,column=2)
 
 R_Vigerene=Radiobutton(frame1,text="Vigenere",variable=metodoElegido,value=16)
-R_Vigerene.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Vigerene.grid(row=6,column=4)
+R_Vigerene.config(cursor="hand2",padx=10,pady=10,bg="#D0ECE7");R_Vigerene.grid(row=6,column=4)
 
 #-------------Imagenes
 
 R_Braille=Radiobutton(frame1,text="Braille",variable=metodoElegido,value=17)
-R_Braille.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Braille.grid(row=8,column=0)
+R_Braille.config(cursor="hand2",padx=10,pady=10,bg="#D0ECE7");R_Braille.grid(row=8,column=0)
 
 R_Dorabella=Radiobutton(frame1,text="Dorabella",variable=metodoElegido,value=18)
-R_Dorabella.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Dorabella.grid(row=8,column=2)
+R_Dorabella.config(cursor="hand2",padx=10,pady=10,bg="#D0ECE7");R_Dorabella.grid(row=8,column=2)
 
 R_Rosicrucian=Radiobutton(frame1,text="Rosicrucian",variable=metodoElegido,value=19)
-R_Rosicrucian.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");R_Rosicrucian.grid(row=8,column=4)
+R_Rosicrucian.config(cursor="hand2",padx=10,pady=10,bg="#D0ECE7");R_Rosicrucian.grid(row=8,column=4)
 
 #------------Lista que almacena IntVar()----------
 
