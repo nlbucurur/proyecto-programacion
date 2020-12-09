@@ -112,7 +112,7 @@ Ejemplo: se quiere codificar la palabra "MENSAJE" con un número de rotaciones d
    Mensaje codificado: PHQVDMH
 
 ### 11. COLUMNAR
-Este metodo toma una clave (letras), y organiza una matriz con la cadena de caractares a codificar para que tenga el mismo numero de columnas que letras en la clave (Esta matriz se completa con X). luego reorganiza las colunas resultantes debido al orden alfabetico de la clave.
+Este metodo toma una clave (letras), y organiza una matriz con la cadena de caractares a codificar para que tenga el mismo numero de columnas que letras en la clave (Esta matriz se completa con X). luego reorganiza las colunas resultantes siguiendo el orden alfabetico de la clave.
 
 Ejemplo: se quiere codificar la palabra "MENSAJE" con la clave "CLAVE"
 
@@ -132,5 +132,45 @@ Reorganizando columnas:
 
 Mensaje codificado: "NMAESXJXEX"
 
+
+
+### 12. MULTIPLICATIVO
+Este metodo transforma inicialmente la cadena de caracteres al cifrado A1Z26 para luego utilizar estos valores y aplicar la ecuación de la forma [(x-1)*c] % 26 = a, donde x es la representacion en A1Z26 del caracter, c es un numero clave y a es el valor final al cual se le aplica un descifrado de la forma (A1Z26 -1).
+
+Ejemplo: se quiere decifrar la palabra "MENSAJE" con la clave "7"
+
+|CARACTER|A1Z26|RESULTADO ECUACIÓN| REPRESENTACION FINAL|
+|---|---|---|---|
+|M|13|6|G|
+|E|5|2|C|
+|S|19|22|W|
+|A|1|0|A|
+|J|10|11|L|
+|E|5|2|C|
+
+Mensaje final: GCWALC
+
+### 13. TRANSPOSITION
+Este metodo toma la cadena de caracteres y la organiza en una matriz. luego las columnas de esta matriz se reorganizan en el orden que indica la clave (la matriz se completa con X).
+
+Ejemplo: se quiere decifrar la palabra "MENSAJE" con la clave "312"
+
+Matriz inicial:
+
+|1|2|3|
+|---|---|---|
+|M|E|N|
+|S|A|J|
+|E|X|X|
+
+Matriz de transposición:
+
+|3|1|2|
+|---|---|---|
+|N|M|E|
+|J|S|A|
+|X|E|X|
+
+Mensaje final: NMEJSAXEX
 
 
