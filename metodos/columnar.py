@@ -17,7 +17,7 @@ def ubicacion(palabra, lista_de_numeros): #Toma la ubicacion de los numeros
                 posicion += str(j)
     return posicion
 
-def cifrar(mensaje1,clave1):
+def cifrar(mensaje1,clave1='CLAVE'):
     clave = clave1.replace(" ", "")
     mensaje = (mensaje1.replace(" ", "")).lower()
     numero_asignado = asignar_numero(clave)
@@ -62,11 +62,11 @@ def cifrar(mensaje1,clave1):
             mensaje_cifrado += matriz[j][d]
         k += 1
 
-    return print(mensaje_cifrado)
+    return mensaje_cifrado
 
 
 
-def descifrar(mensaje1, clave1):
+def descifrar(mensaje1, clave1='CLAVE'):
     mensaje = (mensaje1.replace(" ", "")).lower()
     clave = (clave1.replace(" ", "")).lower()
     numero_asignado = asignar_numero(clave)
@@ -99,4 +99,4 @@ def descifrar(mensaje1, clave1):
 
     mensaje_final=mensaje_descifrado.replace("-", "")
 
-    return print("Mensaje descifrado: " + mensaje_final)
+    return mensaje_final

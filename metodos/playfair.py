@@ -14,9 +14,9 @@ def localizacion_indice(c):
                 loc.append(k)
                 return loc
             
-def cifrar(mensaje):
+def cifrar(mensaje,llave='A'):
     mc = ''
-    llave=input("Por favor, introduce la llave con la que quieres cifrar el texto: ")
+    #llave=input("Por favor, introduce la llave con la que quieres cifrar el texto: ")
     llave=llave.replace(" ", "")
     llave=llave.upper()
     result=list()
@@ -73,9 +73,9 @@ def cifrar(mensaje):
         i=i+2
     return mc      
                  
-def descifrar(mensaje):
+def descifrar(mensaje,llave='A'):
     md = ''
-    llave=input("Por favor, introduce la llave con la que se cifró el texto: ")
+    #llave=input("Por favor, introduce la llave con la que se cifró el texto: ")
     llave=llave.replace(" ", "")
     llave=llave.upper()
     result=list()
