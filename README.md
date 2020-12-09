@@ -11,10 +11,25 @@ Debido a la importancia del encriptado y desencriptado en la sociedad, este proy
 A continuación se presentará la lista de metodos de encriptado que se trabajarán en este proyecto, se explicará en que consiste cada uno:
 
 ### 1. A1Z26 
-Este método consiste en reemplazar las letras del alfabeto por números de la siguiente forma:
+Este método consiste en remplazar las letras del alfabeto por números que van desde el 1 hasta el 26.
 
-**A** - 1; **B** - 2; **C** - 3; **D** - 4; **E** - 5; **F** - 6; **G** - 7; **H** - 8; **I** - 9;  **J** - 10; **k** - 11; **L** - 12; **M** - 13; **N** - 14;
+A B C D E F G H I J  K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z 
+↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓  ↓
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
 
-**O** - 15; **P** - 16;  **Q** - 17; **R** - 18; **S** - 19; **T** - 20; **U** - 21; **V** - 22; **W** - 23; **X** - 24; **Y** - 25; **Z** - 26.
+### 2. ASCII
+Este metodo remplaza cada letra introducida por su valor numerico correspondiente a la tabla ASCII.
 
-### 2. sd
+
+### 3. ATBASH
+Este método invierte el orden del alfabeto y remplaza cada letra con su correspondiente en este alfabeto invertido. 
+
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 
+↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
+Z Y X W V U T S R Q P O N M L K J I H G F E D C B A
+
+### 4. BINARIO
+Este metodo realiza el cambio a representación binaria para cada letra
+
+
+
