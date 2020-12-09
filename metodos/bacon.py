@@ -29,6 +29,7 @@ KEYS = {
 
 
 def cifrar(mensaje):
+    mensaje=mensaje.lower()
     palabras = mensaje.split(' ')
     mensaje_cifrado = []
 
