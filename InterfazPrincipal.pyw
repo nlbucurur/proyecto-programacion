@@ -45,14 +45,9 @@ Label(frame1,text="                                           Métodos que invol
 
 
 #-------------Menu----------------------------------------------
-def infoAdicional():
-    messagebox.showinfo("Barra superior","Cuadro interior")
-def avisoAdvertencia():
-    messagebox.showwarning("Barra superior","error x")
-def Terminar():
-    valor=messagebox.askquestion("Salir","Desea salir de la aplicación?")
-    if valor=="yes":
-        root.destroy()
+def infoAdicional(ext,inter):
+    messagebox.showinfo(ext,inter)
+
 #Con messagebox.askquestion("a","b") aparece "si" o "no"
 #Con .askokcancel aparece "ok" o "cancel" pero esto
 #retorna 1 o 0 respectivamente
@@ -64,27 +59,9 @@ barraMenu=Menu(root)
 root.config(menu=barraMenu)
 #Con root.config parametro menu construye el menu
 
-archivoMenu=Menu(barraMenu, tearoff=0)
-#Con tearoff=0 desaparece el separador de la pestaña de una opcion
-archivoMenu.add_command(label="Op1",command=infoAdicional)
-archivoMenu.add_command(label="Op2",command=avisoAdvertencia)
-archivoMenu.add_command(label="Op3")
+archivoAyuda=Menu(barraMenu,tearoff=0)
+archivoAyuda.add_command(label="Informacion",command=lambda:infoAdicional("Información del proyecto","Este proyecto del curso de 'Programación e Introducción a los métodos númericos' de la Universidad Nacional de Colombia, pretende crear un programa que encripte y desencripte textos dados por el ususario con algunos métodos que van desde los más sencillos, hasta algunos más complicados a través de una interfaz gráfica sencilla"))
 
-#Separador
-archivoMenu.add_separator()
-
-archivoMenu.add_command(label="Salir",command=Terminar)
-#con esto especificamos que el menu la opcion
-#archivo perteneza a otro menu
-archivoEdicion=Menu(barraMenu)
-archivoHerramientas=Menu(barraMenu)
-archivoAyuda=Menu(barraMenu)
-
-barraMenu.add_cascade(label="Archivo",menu=archivoMenu)
-#Primer parametro, texto que va a tener el primer elemento del menu
-#Segundo parametro que elemento alberga este archivo
-barraMenu.add_cascade(label="Edicion",menu=archivoEdicion)
-barraMenu.add_cascade(label="Herramientas",menu=archivoHerramientas)
 barraMenu.add_cascade(label="Ayuda",menu=archivoAyuda)
 
 #-------------radiobuttons---------------------------------------------------

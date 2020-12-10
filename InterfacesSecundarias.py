@@ -12,6 +12,25 @@ from metodos import morse, multiplicativo, rot,Tap, transposition, Vigenere,Keyb
 lista_met=[A1Z26,ascii,atbash,bacon,base64,binary,digraph,Keyboard_Code,
            morse,Tap,columnar,multiplicativo,playfair,rot,transposition,Vigenere]
 
+lista_info=["Este método consiste en remplazar las letras del alfabeto por números que van desde el 1 hasta el 26.",
+            "Este método remplaza cada letra introducida por su valor numerico correspondiente a la tabla ASCII.",
+            "Este método invierte el orden del alfabeto y remplaza cada letra con su correspondiente en el alfabeto invertido.",
+            "Este método utiliza la clave de Bacon (Nombre del creador, utiliza combinaciones de A y B) para remplazar cada uno de los terminos de la cadena de caracteres.",
+            "Este método consiste en remplazar las letras del alfabeto por letras, números y carácteres.",
+            "Este método realiza el cambio a representación binaria para cada letra.",
+            "Este método divide toda cadena de caracteres en pares de letras (si la cadena tiene una cantidad impar agrega una X al final), cada par de letras corresponde a una coordenada dentro de una tabla descrita en el código del método (la primera letra del par determina la columna y la segunda la fila).",
+            "Este método reorganiza el alfabeto siguiendo el orden establecido en un tecaldo QWERTY y remplaza cada letra con su correspondiente en este nuevo alfabeto.",
+            "Este método utiliza la clave de Morse (Nombre del creador, utiliza combinaciones de puntos y rayas) para remplazar cada uno de los terminos de la cadena de caracteres.",
+            "Este método toma cada caracter de la cadena y devuelve su coordenada dentro del cuadrado de Polibio (Primero fila luego columna).",
+            "Este método toma una clave (letras), y organiza una matriz con la cadena de caractares a codificar para que tenga el mismo numero de columnas que letras en la clave (Esta matriz se completa con X). luego reorganiza las colunas resultantes siguiendo el orden alfabetico de la clave.",
+            "Este método transforma inicialmente la cadena de caracteres al cifrado A1Z26 para luego utilizar estos valores y aplicar la ecuación de la forma [(x-1)*c] % 26 = a, donde 'x' es la representacion en A1Z26 del caracter, 'c' es un numero clave y 'a' es el valor final al cual se le aplica un descifrado de la forma (A1Z26 -1).",
+            "Este método presenta multiples peculiaridades que se encuentra ampliamente explicadas en el siguiente enlace: https://www.geeksforgeeks.org/playfair-cipher-with-examples/#:~:text=The%20Playfair%20cipher%20was%20the,instead%20of%20a%20single%20alphabet.",
+            "Este método toma una clave (número), y translada cada letra ese mismo numero veces.",
+            "Este método toma la cadena de caracteres y la organiza en una matriz. luego las columnas de esta matriz se reorganizan en el orden que indica la clave (la matriz se completa con X).",
+            "Este método sigue el mismo principio del método Digraph a diferencia que por cada par de letras devuelve una sola y no dos, además requiere de una clave la cual permite trasponer filas de la matriz generada por el alfabeto y sus desplazamientos.",
+            "Este método reemplaza las letras del alfabeto por las convenciones utilizadas en el Braille.",
+            "Este método reemplaza las letras del alfabeto por los símbolos elegidos para este método.",
+            "Este método reemplaza las letras del alfabeto por los símbolos elegidos para este método."]
 
 #------------------Funcion que ejecuta la funcion de cifrado o descifrado-------------
 def CypherOrDecypher(textoCom1,textoCom2,metodoElegido,ve1):
@@ -75,6 +94,12 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1,img_l
         croot.iconbitmap("img\VCypher.ico")
         croot.title((lista_nom[metodoElegido.get()-1])+" cypher") 
         croot.resizable(0,0)
+        barraMenu=Menu(croot)
+        croot.config(menu=barraMenu)
+        archivoAyuda=Menu(barraMenu,tearoff=0)
+        archivoAyuda.add_command(label=lista_nom[metodoElegido.get()-1],command=lambda:messagebox.showinfo(
+            "Información sobre el método "+ lista_nom[metodoElegido.get()-1],lista_info[metodoElegido.get()-1],parent=croot))
+        barraMenu.add_cascade(label="Información",menu=archivoAyuda)
         
         #-------------Transformacion----------------------------------------------------
         
@@ -91,11 +116,11 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1,img_l
             frameI1.grid(row=0,column=0,columnspan=3,padx=10,pady=5)
             
             frameIText1=Frame(croot)#,width=200,height=10)
-            frameIText1.config(bg="red")
+            frameIText1.config(bg="#26C6DA")
             frameIText1.grid(row=1,column=0,padx=10,pady=10)
             
             frameIText2=Frame(croot)
-            frameIText2.config(bg="green")
+            frameIText2.config(bg="gray")
             frameIText2.grid(row=1,column=2,padx=10,pady=10)
             
             frameButton=Frame(croot)
@@ -156,11 +181,11 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1,img_l
             frameI1.grid(row=0,column=0,columnspan=3,padx=10,pady=5)
             
             frameIText1=Frame(croot)#,width=200,height=10)
-            frameIText1.config(bg="red")
+            frameIText1.config(bg="#26C6DA")
             frameIText1.grid(row=1,column=0,padx=10,pady=10)
             
             frameIText2=Frame(croot)
-            frameIText2.config(bg="green")
+            frameIText2.config(bg="gray")
             frameIText2.grid(row=1,column=2,padx=10,pady=10)
             
             frameIClave=Frame(croot)
@@ -225,16 +250,14 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1,img_l
             croot.config(bg="light blue",bd=10,relief="groove",padx=20)
             #Tamaño de la nueva ventana
             croot.geometry("530x600")
-            
-            
-            
+
             #-----------------Frames----------------
             frameI1=Frame(croot,width=500,height=200)
-            frameI1.config(bg="light blue",width=500,height=200)
+            frameI1.config(bg="#EEFBFC",width=500,height=200)
             frameI1.grid(row=0,column=0)#,columnspan=3)
             
             frameIText=Frame(croot,width=200,height=300)
-            frameIText.config(bg="red")
+            frameIText.config(bg="#26C6DA")
             frameIText.grid(row=1,column=0)
             
             frameIImgC=Frame(croot,width=200,height=300)
@@ -242,7 +265,7 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1,img_l
             #frameIImgC.grid(row=1,column=1)
             
             frameIImg=Frame(croot,width=200,height=300)
-            frameIImg.config(bg="green")
+            frameIImg.config(bg="#D0ECE7")
             #frameIImg.grid(row=2,column=0)
             
             frameButton=Frame(croot)
@@ -252,12 +275,12 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1,img_l
             
             RbC=Radiobutton(frameI1,text="Cifrar",variable=ve1,value=1,command=lambda:
                             CorD_brailleInterface(croot,frameIImgC,frameIImg,frameButton,ve1))
-            RbC.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC")
+            RbC.config(cursor="hand2",padx=10,pady=10,bg="#EEFBFC")
             RbC.grid(row=1,column=0)
 
             RbD=Radiobutton(frameI1,text="Descifrar",variable=ve1,value=2,command=lambda:
                             CorD_brailleInterface(croot,frameIImgC,frameIImg,frameButton,ve1))
-            RbD.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");
+            RbD.config(cursor="hand2",padx=10,pady=10,bg="#EEFBFC");
             RbD.grid(row=1,column=1)
             
             #----------------Cuadros de texto----------------
@@ -624,12 +647,7 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1,img_l
                 botonX.grid(row=3,column=3,padx=2,pady=2)
                 botonY.grid(row=3,column=4,padx=2,pady=2)
                 botonZ.grid(row=3,column=5,padx=2,pady=2)
-                
-           
-            
-        else:
-            print("Cifrado con Imagenes")
-
+        
         
 
 #---------------Funciones adicionales para metodos de imagenes

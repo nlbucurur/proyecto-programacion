@@ -6,6 +6,7 @@ Created on Sun Nov 15 13:24:26 2020
 """
 
 def cifrar(mensaje, s=13):
+    s=int(s)
     MAYUSCULA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     minuscula = "abcdefghijklmnopqrstuvwxyz"
     palabras = mensaje.split(" ")
@@ -32,6 +33,7 @@ def cifrar(mensaje, s=13):
     return ' '.join(mensaje_cifrado)
 
 def descifrar(mensaje, s=13):
+    s=int(s)
     MAYUSCULA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     minuscula = "abcdefghijklmnopqrstuvwxyz"
     palabras = mensaje.split(" ")
