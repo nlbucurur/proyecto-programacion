@@ -21,7 +21,7 @@ root=Tk()
 root.title("Proyecto programación | Encriptado y Desencriptado") #Nombre que aparece en la ventana
 root.iconbitmap("img\VCypher.ico")  #Permite elegir el icono de la esquina superior izquierda
 root.resizable(0,0)
-root.geometry("600x370") #Tamaño por defecto de la ventana principal
+root.geometry("600x400") #Tamaño por defecto de la ventana principal
 
 root.config(bg="#26C6DA",bd="15",relief="groove") #Color de fondo, tamaño del borde y 
 #tipo de borde de la raíz de la interfaz respectivamente
@@ -263,20 +263,9 @@ img_list2=[ImageA2,ImageB2,ImageC2,ImageD2,ImageE2,ImageF2,ImageG2,
 #------------Botón para llamar un método de cifrado----------------------
 
 
-def clone(widget):
-    parent = widget.nametowidget(widget.winfo_parent())
-    clase = widget.__class__
-
-    clone = clase(parent)
-    for key in widget.configure():
-        #clone.configure
-        #clone.config( 
-            print({key: widget.cget(key)})
-    return clone
-
 boton_metodo=Button(root,text="Listo",command=lambda:InterfacesSecundarias.VentanaCifrado(root,
                                         metodoElegido,lista_nom,ve1,ve2,img_list,img_list1,img_list2))
-boton_metodo.config(cursor="hand2")
+boton_metodo.config(cursor="hand2",height=2,width=10)
 boton_metodo.pack()#grid(row=7,column=1)
 
 

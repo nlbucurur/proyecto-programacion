@@ -138,7 +138,7 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1,img_l
             #-------------Button---------------
             
             botonCorD=Button(frameButton,text="Ejecutar",command=lambda:CypherOrDecypher(textoCom1,textoCom2,metodoElegido,ve1))
-            botonCorD.config(cursor="hand2")
+            botonCorD.config(cursor="hand2",height=2,width=10)
             botonCorD.pack()
             
             
@@ -178,8 +178,10 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1,img_l
             textoCom2=Text(frameIText2,width=30,height=12)
             textoCom2.grid(row=1,column=0,padx=10,pady=10)
             
+            Label(frameIClave,text="Clave").grid(row=0,column=0)
+            
             textoClave=Entry(frameIClave)
-            textoClave.grid(row=0,column=0)
+            textoClave.grid(row=1,column=0)
             
             #-------------Barras de scroll------------
             
@@ -210,7 +212,7 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1,img_l
             
             botonCorD=Button(frameButton,text="Ejecutar",command=lambda:CorD_CLAVE(textoCom1,textoCom2,textoClave,
                                                                                    metodoElegido,ve1))
-            botonCorD.config(cursor="hand2")
+            botonCorD.config(cursor="hand2",height=2,width=10)
             botonCorD.pack()
         
         
@@ -220,9 +222,10 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1,img_l
         
         elif metodoElegido.get()<20:
             
-            croot.config(bg="#D6DBDF")
+            croot.config(bg="light blue",bd=10,relief="groove",padx=20)
             #Tamaño de la nueva ventana
-            croot.geometry("680x600")
+            croot.geometry("530x600")
+            
             
             
             #-----------------Frames----------------
@@ -236,24 +239,24 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1,img_l
             
             frameIImgC=Frame(croot,width=200,height=300)
             frameIImgC.config(bg="orange")
-            frameIImgC.grid(row=1,column=1)
+            #frameIImgC.grid(row=1,column=1)
             
             frameIImg=Frame(croot,width=200,height=300)
             frameIImg.config(bg="green")
             #frameIImg.grid(row=2,column=0)
             
             frameButton=Frame(croot)
-            frameButton.grid(row=3,column=0)#,columnspan=3)
+            frameButton.grid(row=1,column=1)#,columnspan=3)
             
             #----------------Radiobuttons-----------
             
             RbC=Radiobutton(frameI1,text="Cifrar",variable=ve1,value=1,command=lambda:
-                            CorD_brailleInterface(frameIImgC,frameIImg,frameButton,ve1))
+                            CorD_brailleInterface(croot,frameIImgC,frameIImg,frameButton,ve1))
             RbC.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC")
             RbC.grid(row=1,column=0)
 
             RbD=Radiobutton(frameI1,text="Descifrar",variable=ve1,value=2,command=lambda:
-                            CorD_brailleInterface(frameIImgC,frameIImg,frameButton,ve1))
+                            CorD_brailleInterface(croot,frameIImgC,frameIImg,frameButton,ve1))
             RbD.config(cursor="hand2",padx=10,pady=10,bg="#F6DDCC");
             RbD.grid(row=1,column=1)
             
@@ -279,19 +282,19 @@ def VentanaCifrado(root,metodoElegido,lista_nom,ve1,ve2,img_list,img_list1,img_l
             if metodoElegido.get()==17:  
                 botonCorD=Button(frameButton,text="Ejecutar",command=lambda:CorD_Imgs
                              (croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,0,img_list))
-                botonCorD.config(cursor="hand2")
+                botonCorD.config(cursor="hand2",height=2,width=10)
                 botonCorD.grid(row=5,column=0,padx=15,pady=15)
             #nota: al poner cualquier letra existente en este punto se muestran las imagenes
             #Razón desconocida
             elif metodoElegido.get()==18:  
                 botonCorD=Button(frameButton,text="Ejecutar",command=lambda:CorD_Imgs
                              (croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,0,img_list1))
-                botonCorD.config(cursor="hand2")
+                botonCorD.config(cursor="hand2",height=2,width=10)
                 botonCorD.grid(row=5,column=0,padx=15,pady=15)
             else:
                 botonCorD=Button(frameButton,text="Ejecutar",command=lambda:CorD_Imgs
                              (croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,0,img_list2))
-                botonCorD.config(cursor="hand2")
+                botonCorD.config(cursor="hand2",height=2,width=10)
                 botonCorD.grid(row=5,column=0,padx=15,pady=15)
             
         
@@ -649,7 +652,7 @@ def CorD_Imgs(croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,ve2,img_list
         
         frameIImgC.destroy()
         frameIImgC=Frame(croot)
-        frameIImgC.config(bg="red")
+        frameIImgC.config(bg="light blue")
         
         mostrar=False;i=0;j=0;x=0;y=0
         men_cif=textoCom.get("1.0",'end-1c') #el -1c es para eliminar un \n extra que toma el .get()
@@ -671,7 +674,7 @@ def CorD_Imgs(croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,ve2,img_list
             j=0
             i+=1
         if mostrar:
-            frameIImgC.grid(row=1,column=1)
+            frameIImgC.grid(row=2,column=0)
             
     else:
         
@@ -688,18 +691,20 @@ def CorD_Imgs(croot,textoCom,frameIImg,frameIImgC,metodoElegido,ve1,ve2,img_list
 label2=Label(root,image=Image1)
 op_label.append(labelx)"""
 
-def CorD_brailleInterface(frameIImgC,frameIImg,frameButton,ve1):
+def CorD_brailleInterface(croot,frameIImgC,frameIImg,frameButton,ve1):
     if ve1.get()==1:
-        frameIImgC.grid(row=1,column=1)
+        #frameIImgC.grid(row=2,column=0)
         #a=clone_(frameIImgC)
         #print(a.__class__)
         #print(frameIImgC.__class__)
         #a.grid(row=3,column=3)
         frameIImg.grid_forget()
-        frameButton.grid(row=3,column=0)
+        frameButton.grid(row=1,column=1)
+        croot.geometry("530x600")
         
     else:
         frameButton.grid_forget()
         frameIImg.grid(row=2,column=0)
         frameIImgC.grid_forget()
+        croot.geometry("480x600")
 
